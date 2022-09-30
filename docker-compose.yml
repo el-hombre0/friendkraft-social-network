@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web-server:
+    build:
+      dockerfile: ./php.Dockerfile
+      context: .
+    restart: always
+    volumes:
+      - './page/:/var/www/html/'
+    ports:
+      - "8090:90"
+  mysql-server:
+    image: mysql:8.0.19
+    container_name: mysql-server-CW
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: appDB
+    volumes:
+      - ./page/Databases:/docker-entrypoint-initdb.d/
+volumes:
+  mysql-data:
