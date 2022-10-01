@@ -8,7 +8,7 @@ services:
     volumes:
       - './page/:/var/www/html/'
     ports:
-      - "8090:90"
+      - "8080:80"
   mysql-server:
     image: mysql:8.0.19
     container_name: mysql-server-CW
