@@ -14,14 +14,25 @@
     }
     if (!empty($Module)) {
         $Param = array();
-        for ($i = 0; $i < count($URL_Parts); $i++){
-            $Param[$URL_Parts[i]] = $URL_Parts[++$i];
+        for ($i = 0; $i < count($URL_Parts); $i++) {
+            $Param[$URL_Parts[$i]] = $URL_Parts[++$i];
         }
     }
+
 
     if ($Page == 'index'){
         include('page/index.php');
     }
     elseif ($Page == 'login') include('page/login.php');
     elseif ($Page == 'register') include('page/register.php');
+
+    function top($title){
+        include("./page/html/top.php");
+    }
+    function content(){
+        include("./page/html/content.php");
+    }
+    function bottom(){
+        include("./page/html/bottom.php");
+    }
 ?>
