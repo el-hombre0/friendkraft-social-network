@@ -27,12 +27,12 @@
     elseif ($Page == 'register') include('page/register.php');
 
     function top($title){
-        include("./page/html/top.php");
+        include("./html/top.php");
     }
     function content(){
-        include("./page/html/content.php");
+        include("./html/content.php");
     }
     function bottom(){
-        include("./page/html/bottom.php");
+        include("./html/bottom.php");
     }
 ?>
