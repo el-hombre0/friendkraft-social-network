@@ -127,3 +127,23 @@ span{
     font-size: 20px;
     color: #fff;
 }
+
+#register p{
+    /*надпись в окне регистрации */
+    margin: 5px 0 0 90px;
+}
+
+#register #center {
+    text-align: center;
+}
+#register .reg__email__title{
+    font-weight: bold;
+}
+#register .reg__pass__title{
+    font-weight: bold;
+
+}
+#register .reg__pass2__title{
+    font-weight: bold;
+
+}

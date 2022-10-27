@@ -8,12 +8,19 @@ services:
       - '.:/var/www/html/'
     ports:
       - '8080:80'
+  postgresql:
+    image: postgres:15.0-alpine
+    container_name: pg_server
+    environment:
+      POSTGRES_DB: "network_db"
+      POSTGRES_USER: "user"
+      POSTGRES_PASSWORD: "pass"
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d/
+    ports:
+      - "5432:5432"
 #  mysql-server:
 #    image: mysql
 #    container_name: mysql_server
 #    restart: always
-#    environment:
-#      MYSQL_ROOT_PASSWORD: secret
-#      MYSQL_DATABASE: appDB
-#    volumes:
-#      - ./page/database:/docker-entrypoint-initdb.d/
+#
