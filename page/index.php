@@ -2,8 +2,8 @@
 <div id="header">Шапка</div>
 <div id="leftcol">
     <?php
-    include("form/login_form.php");
-    include("form/register_form.php");
+        include("form/login_form.php");
+        include("form/register_form.php");
     ?>
 </div>
 <div id="content">
