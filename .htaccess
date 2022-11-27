@@ -7,3 +7,14 @@ Options All -Indexes
 #RewriteRule ^resource/(.*)$ resource/$1 [L]
 #RewriteRule ^.*$ [NC,L]
 #RewriteRule ^.*$ index.php [NC,L]
+#
+#
+#
+#
+AddType application/x-httpd-php .js
+
+AddHandler x-httpd-php5 .js
+
+<FilesMatch "\.(js|php)$">
+SetHandler application/x-httpd-php
+</FilesMatch>

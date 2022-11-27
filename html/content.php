@@ -1,14 +1,13 @@
 <?php
-    $connect_data = "host=127.0.0.1 port=5432 db_name=network_db user=user1 password=pass";
-    $db_connect = pg_connect($connect_data);
-
-    if(!$db_connect){
-        die("Connecting error: ".pg_result_error());
-        }
-    echo "Successful connected to the database.";
-    pg_close($connect_data);
-?>
-?>
+//    $connect_data = "host=127.0.0.1 port=5432 db_name=network_db user=user1 password=pass";
+//    $db_connect = pg_connect($connect_data);
+//
+//    if(!$db_connect){
+//        die("Connecting error: ".pg_result_error());
+//        }
+//    echo "Successful connected to the database.";
+//    pg_close($connect_data);
+//?>
 <h3>Убеждённость некоторых оппонентов показала себя во всей красе</h3>
 <p>Таким образом, синтетическое тестирование предопределяет высокую востребованность поэтапного и последовательного развития общества. Современные технологии достигли такого уровня, что социально-экономическое развитие, а также свежий взгляд на привычные вещи — безусловно открывает новые горизонты для переосмысления внешнеэкономических политик. Значимость этих проблем настолько очевидна, что высокое качество позиционных исследований требует определения и уточнения направлений прогрессивного развития.</p>
 

@@ -3,7 +3,7 @@ $(document).ready(function(){
         $("#popur").css("display", "block");
        $("#hover").css("display", "block");
    });
-   $(".submit").click(function(event){
+   $(".submit").click(function(event){ // при нажатии на кнопку подствердить
        event.preventDefault(); // обработка и обновление на этой же странице
        let email = $("#email").val();
        let password = $("#password").val();
@@ -11,8 +11,8 @@ $(document).ready(function(){
        // запрос, отправляющийся аяксом
        $.ajax({
            type:"POST",
-           url:"/action_register", // адрес обработчика
-           data:{
+           url:"../setting/action_register.php", // адрес обработчика
+           data:{ // передаваемые переменные
                email:email,
                password:password,
                password_2:password_2

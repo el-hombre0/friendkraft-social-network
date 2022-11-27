@@ -1,7 +1,7 @@
 <?php
     session_start();
     header('Content-Type: text/html; charset=utf-8'); // В функции заголовка указывается кодировка страницы
-    include ("bd.php");
+    include ("bd.php"); // файл подключения к базе данных
     if ($_SERVER['REQUEST_URI'] == '/') { // Если адрес для загрузки страницы пустой, то заносим в переменные главный файл
             $Page = 'index';
             $Module = 'index';
