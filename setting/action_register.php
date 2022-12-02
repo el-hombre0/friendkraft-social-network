@@ -20,11 +20,11 @@ if(isset($_POST)){
         echo "Введённые пароли не совпадают.";
     }
     else{
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $password_2 = $_POST['password_2'];
+        $email = htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password']); //для защиты от вредоносного кода
+        $password_2 = htmlspecialchars($_POST['password_2']);
         $mdPassword = md5($password);
-        $date = date("Y-m-d");
+        $date = htmlspecialchars(date("Y-m-d"));
         $ip = $_SERVER['REMOTE_ADDR']; // ip зарегистрированного пользователя
         $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
         $sql = pg_query($db_connect, "SELECT id FROM users WHERE email='$email'") or die(pg_result_error());
@@ -32,7 +32,7 @@ if(isset($_POST)){
             echo "Такой email уже зарегистрирован.";
         }
         else{
-            $result = pg_query($db_connect, "INSERT INTO users (email, password, date, ip) VALUES ('$email', '$mdPassword', '$date', '$ip')");
+            $result = pg_query($db_connect, "INSERT INTO users (email, password, date, ip, activation) VALUES ('$email', '$mdPassword', '$date', '$ip', 0)");
             echo "Регистрация прошла успешно";
         }
     }

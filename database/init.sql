@@ -13,18 +13,21 @@ CREATE TABLE users (
     email VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(50) NOT NULL,
     "date" DATE NOT NULL,
-    ip VARCHAR(100)
+    ip VARCHAR(100),
+    activation INT
 );
-INSERT INTO users(email, password, "date", ip) VALUES
+INSERT INTO users(email, password, "date", ip, activation) VALUES
 (
     'test@mail.ru',
     '1q2w3e4r',
     '2002-10-20',
-    '192.168.0.13'
+    '192.168.0.13',
+    1
 ),
 (
     'buycber@gm.com',
     'nuq634dgy43^^D',
     '2022-10-24',
-    '10.0.0.1'
+    '10.0.0.1',
+    1
 );

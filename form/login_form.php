@@ -1,5 +1,6 @@
 <div id="login">
-    <form action="/action_login.php" method="post">
+    <div id="inform_2"> </div>
+    <form action="../setting/action_login.php" method="post">
         <b>Логин</b>
         <input type="text" name="email_2" id="email_2">
         <br/>

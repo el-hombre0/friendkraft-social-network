@@ -22,13 +22,13 @@
     }
 
 
-    if ($Page == 'index'){
-        include('page/index.php');
-    }
-    elseif ($Page == 'login') include('page/login.php');
-    elseif ($Page == 'register') include('page/register.php');
+if($Page=='index')include('page/index.php');
+elseif($Page=='novosti')include('page/novosti.php');
+elseif($Page=='action_register')include('setting/action_register.php');
+elseif($Page=='action_login')include('setting/action_login.php');
 
-    function top($title){
+
+function top($title){
         include("./html/top.php");
     }
     function content(){
