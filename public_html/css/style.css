@@ -1,0 +1,232 @@
+body{
+    background-color:#E6E6FA;
+}
+#header{
+    width:90%;
+    height:60px;
+    float:left;
+    margin-left:60px;
+    border-radius:7px;
+       background:#4682b4;
+}
+#leftcol{
+    width:250px;
+  float:left;
+    margin-left:60px;
+    border-radius:7px;
+    margin-top:10px;
+       padding:10px;
+     }
+    #content{
+    width:900px;
+    margin-top:10px;
+    float:left;
+    margin-left:15px;
+    border-radius:7px;
+       background:#fff;
+       padding:10px;
+} 
+#content h3{
+      margin-left:20px;
+}
+#content p{
+      margin-left:20px;
+      font-size:10px;
+}
+#login #email_2{
+    padding:8px;
+    margin-left:25px;
+        border-radius:7px;
+          margin-top:8px;
+            margin-bottom:8px;
+            outline:none;
+}
+#login #password_3{
+    padding:8px;
+    margin-left:25px;
+        border-radius:7px;
+          margin-top:8px;
+            margin-bottom:8px;
+             outline:none;
+}
+#login .submit_2{
+    width:187px;
+    padding:8px;
+       margin-left:25px;
+            border-radius:7px;
+                 background:#4682b4;
+                 color:#fff;
+                  outline:none;
+}
+#login b{
+        margin-left:25px;
+        color:#696969;
+}
+#login #button{
+    width:187px;
+    padding:8px;
+       margin-left:25px;
+            border-radius:7px;
+                 background:#4682b4;
+                 color:#fff;
+                  outline:none;
+                     margin-top:10px;
+}
+#popur{
+    display:none;
+    width:520px;
+    height:550px;
+    background:#fff;
+    position:absolute;
+    z-index:999;
+  top:45%;
+  left:50%;
+  margin-left:-250px;
+    margin-top:-250px;
+        border-radius:7px;
+    
+}
+#hover{
+    display:none;
+    width:100%;
+    height:100%; 
+     position:absolute;
+        background:rgba(0,0,0,0.7);
+        top:0px;
+        left:0px;
+          z-index:998;
+}
+.popur_top{
+    width:520px;
+    height:50px;
+     background:#4682b4;
+     padding-top:20px;
+       border-radius:5px;
+}
+span{
+    margin-left:20px;
+    font-size:20px;
+    color:#fff;
+}
+#popur a{
+   color:#fff;
+   text-decoration:none;
+      font-size:30px;
+         position:absolute;
+         right:10px;
+}
+#register p{
+    margin-left:90px;  
+      margin-top:5px;
+}
+#register #email, #password, #password_2{
+    width:263px;
+    height:30px;
+    margin-left:110px;
+     border-radius:5px;
+     outline:none;
+       margin-top:10px;
+}
+#register .submit{
+    width:263px;
+    height:30px;
+    margin-left:110px;
+     border-radius:5px;
+     outline:none;
+       margin-top:10px;
+        background:#4682b4;
+        color:#fff;
+        padding-top:5px;
+        padding-bottom:5px;
+}
+#register b{
+    margin-left:110px;
+    margin-top:10px;
+    color:#696969;
+}
+
+#popur_top{
+    display:none;
+    width:520px;
+    height:550px;
+    background:#fff;
+    position:absolute;
+    z-index:999;
+  top:50%;
+  left:50%;
+  margin-left:-250px;
+    margin-top:-250px;
+        border-radius:7px;
+    
+}
+.popur_top{
+    width:520px;
+    height:50px;
+     background:#4682b4;
+     padding-top:20px;
+       border-radius:5px;
+}
+#popur_top #name{
+    width:263px;
+    height:30px;
+    margin-left:110px;
+     border-radius:5px;
+     outline:none;
+       margin-top:10px;
+}
+#popur_top #lastname{
+   width:263px;
+    height:30px;
+    margin-left:110px;
+     border-radius:5px;
+     outline:none;
+       margin-top:10px;
+}
+#popur_top #country{
+    width:263px;
+    height:30px;
+    margin-left:110px;
+     border-radius:5px;
+     outline:none;
+       margin-top:10px;
+}
+#popur_top #city{
+     width:263px;
+    height:30px;
+    margin-left:110px;
+     border-radius:5px;
+     outline:none;
+       margin-top:10px;
+      
+}
+#popur_top #city{
+    width:263px;
+    height:30px;
+    margin-left:110px;
+     border-radius:5px;
+     outline:none;
+       margin-top:10px;
+}
+#popur_top .submit_3{
+    width:263px;
+    height:30px;
+    margin-left:110px;
+     border-radius:5px;
+     outline:none;
+       margin-top:10px;
+        background:#4682b4;
+        color:#fff;
+        padding-top:5px;
+        padding-bottom:5px;
+}
+#popur_top p{
+    margin-left:160px;  
+      margin-top:5px;
+      color:#696969;
+      font-size:20px;
+}
+#popur_top b{
+    margin-left:110px;
+    margin-top:10px;
+    color:#696969;
+}

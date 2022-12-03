@@ -1,5 +1,3 @@
-28:44 регистрация пользователей часть 1
-
 RewriteEngine on
 RewriteBase /
 Options All -Indexes
@@ -9,3 +7,70 @@ RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^resource/(.*)$ resource/$1 [L]
 RewriteRule ^.*$ [NC,L]
 RewriteRule ^.*$ index.php [NC,L]
+
+
+///////////////////Old dockerfile///////////////////
+
+#FROM php:7.4.3-apache
+#FROM php:7.3-fpm
+#WORKDIR /var/www/html/
+#COPY . .
+#RUN apt-get update &&\
+#    apt-get install -y libpq-dev &&\
+#    docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql &&\
+#    docker-php-ext-install pdo_pgsql
+#RUN apt-get install -y libaprutil1-dbd-pgsql &&\
+#    a2enmod authn_dbd &&\
+#    a2enmod authn_socache &&\
+#    service apache2 restart
+
+
+#FROM jaanonim/docker-apache2-php-postgresql
+#WORKDIR .
+#COPY . ./app
+
+/////////////////////////Old docker-compose.yml////////////
+
+version: '3.9'
+services:
+  ap_php_pgsql:
+    image: jaanonim/docker-apache2-php-postgresql
+    volumes:
+      - '.:/var/www/html/'
+    ports:
+      - '8080:80'
+#  postgresql:
+#    image: postgres:15.0-alpine
+#    container_name: pg_server
+#    environment:
+#      POSTGRES_DB: "network_db"
+#      POSTGRES_USER: "user"
+#      POSTGRES_PASSWORD: "pass"
+#    volumes:
+#      - ./database:/docker-entrypoint-initdb.d/
+#    ports:
+#      - "5432:5432"
+
+
+# version: '3.9'
+# services:
+#   php_apache:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     volumes:
+#       - '.:/var/www/html/'
+#     ports:
+#       - 8081:8081
+
+#   postgresql:
+#     build:
+#       context: .
+#       dockerfile: database/Dockerfile
+#     volumes:
+#       - ./database:/docker-entrypoint-initdb.d/
+#     ports:
+#       - 5432:5432
+
+FROM postgres:latest
+ENV POSTGRES_USER=postgres POSTGRES_PASSWORD=password POSTGRES_DB=postgres
