@@ -1,10 +1,11 @@
 <?
 session_start();
+$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 if(!$_SESSION['email'] AND !$_SESSION['password']){
     
 }else{
-    $q=mysql_query("SELECT * FROM users WHERE email='$email' AND password='$password'");
-    $r=mysql_fetch_array($q);
+    $q=pg_query($db_connect, "SELECT * FROM users WHERE email='$email' AND password='$password'");
+    $r=pg_fetch_array($q);
 }
 if(isset($_POST)){
     if(empty($_POST['name'])){
@@ -21,7 +22,7 @@ if(isset($_POST)){
                     $country=htmlspecialchars($_POST["country"]);
                           $city=htmlspecialchars($_POST["city"]);
                           
-                          mysql_query("UPDATE users SET name='$name', lastname='$lastname', country='$country', city='$city' WHERE id='{$_SESSION['id']}'");
+                          pg_query($db_connect, "UPDATE users SET name='$name', lastname='$lastname', country='$country', city='$city' WHERE id='{$_SESSION['id']}'");
                           exit("<meta http-equiv='Refresh' content='0; URL=/novosti'>");
     }
 }

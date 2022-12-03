@@ -34,7 +34,7 @@ if(isset($_POST)){
         }else{
             $q="INSERT INTO users(email, password, data, ip, activation)VALUES('$email','$password', '$data', '$ip', '0')";
             $result=pg_query($q)or die (mysql_error());
-            $id_active=pg_fetch_assoc($activ);
+            $id_active=pg_fetch_array($activ);
             $activation=md5($id_active['id']);
             $subject="Подтверждение регистрации";
             $message="Здравствуйте, спасибо за регистрацию на сайте RESEPTO.RU \n Ваш E-mail ".$email."\n

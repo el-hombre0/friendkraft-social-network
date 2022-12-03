@@ -8,7 +8,7 @@ $password=$_SESSION['password'];
 
 $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 $q_user=pg_query($db_connect,"SELECT id FROM users WHERE id='$id'");
-$r_user = pg_fetch_assoc($q_user);
+$r_user = pg_fetch_array($q_user);
 $id=$r_user['id'];
 
 }

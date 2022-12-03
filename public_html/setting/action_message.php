@@ -4,7 +4,7 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
     
 }else{
     $q=pg_query($db_connect,"SELECT * FROM users WHERE id='{$_SESSION['id']}'");
-    $r=pg_fetch_assoc($q);
+    $r=pg_fetch_array($q);
 }
 
 if(isset($_POST)){
@@ -22,7 +22,7 @@ if(isset($_POST)){
                      $query_2="INSERT INTO dialog(author, poluchatel, mess, data)VALUES('{$_SESSION['id']}', '$poluchatel', '$mess', '$data')";
                    $result_2=pg_query($db_connect, $query_2) or die (pg_result_error());
                     $q_2=pg_query($db_connect, "SELECT * FROM message WHERE author='{$_SESSION['id']}' AND poluchatel='$poluchatel'");
-    $r_2=pg_fetch_assoc($q_2);
+    $r_2=pg_fetch_array($q_2);
     if($r_2['id']==''){
                    $query="INSERT INTO message(author, poluchatel, mess, data, ready)VALUES('{$_SESSION['id']}', '$poluchatel', '$mess', '$data', '0')";
                    $result=pg_query($db_connect, $query) or die (pg_result_error());

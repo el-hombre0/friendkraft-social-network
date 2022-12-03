@@ -6,7 +6,7 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
 }else{
 
     $q=pg_query($db_connect, "SELECT * FROM users WHERE id='{$_SESSION['id']}'");
-       $r=pg_fetch_assoc($q);
+       $r=pg_fetch_array($q);
       
 }
 if(isset($_POST)){
@@ -26,7 +26,7 @@ if(isset($_POST)){
              $password=$_POST['password'];
                 $password=md5($password);
        $query=pg_query($db_connect, "SELECT password FROM users WHERE id='{$_SESSION['id']}'");
-        $result=pg_fetch_assoc($query);
+        $result=pg_fetch_array($query);
       if($result['password']!=$password){
                   echo"<center><font size=4 color=red>Старый пароль введен не верно! ВЫ можете востановить пароль, если выйти из аккаунта</font></center>";    
 

@@ -5,7 +5,7 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
     
 }else{
     $q=pg_query($db_connect, "SELECT * FROM users WHERE id='{$_SESSION['id']}'");
-    $r=pg_fetch_assoc($q);
+    $r=pg_fetch_array($q);
 }
 if(isset($_POST)){
     if(empty($_POST['textarea'])){
@@ -21,7 +21,7 @@ if(isset($_POST)){
                    $textarea=htmlspecialchars($textarea);
                     $mess=$_POST['textarea'];
                     $t=pg_query($db_connect,"SELECT * FROM message WHERE author='{$_SESSION['id']}'");
-                    $w=pg_fetch_assoc($t);
+                    $w=pg_fetch_array($t);
                     if($w['id']==""){
                      $query_3="INSERT INTO message(author, poluchatel, mess, data, ready)VALUES('{$_SESSION['id']}', '$poluchatel', '$mess', '$data', '0')";
                    $result_3=pg_query($db_connect, $query_3) or die (pg_result_error());

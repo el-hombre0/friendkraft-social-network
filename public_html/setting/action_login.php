@@ -1,4 +1,5 @@
 <?
+$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 if(isset($_POST)){
   if(empty($_POST['email_2'])){
     $email_2 = $_POST['email_2']; 
@@ -23,8 +24,8 @@ exit("<b><center><font size=4 color=red>Введите пароль</font></cent
     $email=$_POST['email_2'];
      $password=$_POST['password_3'];
      $password=md5($password);
-     $user=mysql_query("SELECT id FROM users WHERE email='$email' AND password='$password' AND activation='1'");
-     $id_user=mysql_fetch_array($user);
+     $user=pg_query($db_connect, "SELECT id FROM users WHERE email='$email' AND password='$password' AND activation='1'");
+     $id_user=pg_fetch_array($user);
      if(empty($id_user['id'])){
          exit("<b><center><font size=4 color=red>Введенный вами E-mail или пароль не верный, либо ваш аккаунт не активированн,<br> или воспользуйтесь <a href=/password>
          востановлением пароля</a></font></center></b>");

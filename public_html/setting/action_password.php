@@ -9,7 +9,7 @@ if(isset($_POST)){
       $email=$_POST['email'];
          $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
          $resultat=pg_query($db_connect, "SELECT * FROM users WHERE email='$email'");
-        $array=pg_fetch_assoc($resultat);
+        $array=pg_fetch_array($resultat);
        if(empty($array)){
             exit("<b><center><font size=4 color=red>Такого пользователя<br> не существует</font></center></b>");
         }
