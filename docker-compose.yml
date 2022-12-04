@@ -4,7 +4,17 @@ services:
     build:
      context: .
      dockerfile: Dockerfile
-    # volumes:
-    #   - '.:/var/www/html/'
+    volumes:
+      - './database:/docker-entrypoint-initdb.d/'
     ports:
       - '8080:80'
+
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: evendot@yandex.ru
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - '5050:80'
+
