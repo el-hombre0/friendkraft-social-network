@@ -1,4 +1,6 @@
 <?
+$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
+
 if(!$_SESSION['email'] AND !$_SESSION['password']){
 top("Социальная сеть");
         echo"<div id=header>Шапка</div>
@@ -8,25 +10,25 @@ top("Социальная сеть");
          echo"</div>";
 }else{
 
-    $q=mysql_query("SELECT id, name, lastname FROM users WHERE id='{$_GET['id']}'");
-    $result=mysql_fetch_array($q);
+    $q=pg_query($db_connect, "SELECT id, name, lastname FROM users WHERE id='{$_GET['id']}'");
+    $result=pg_fetch_array($q);
     
     $id=$_GET['id'];
     top($result['name']."&nbsp;&nbsp;".$result['lastname']);
     if(isset($_GET['id'])){
         $id=$_GET['id'];
     }else{
-         $q=mysql_query("SELECT * FROM users");
-    $r=mysql_fetch_array($q);
+         $q=pg_query($db_connect, "SELECT * FROM users");
+    $r=pg_fetch_array($q);
             $id=$_GET['id'];
     }
         $email=$_SESSION['email'];
       $password=$_SESSION['password'];
-       $q_2=mysql_query("SELECT id, name, lastname, country, city, avatar FROM users WHERE id='{$_SESSION['id']}'");
-    $r_2=mysql_fetch_array($q_2);
+       $q_2=pg_query($db_connect, "SELECT id, name, lastname, country, city, avatar FROM users WHERE id='{$_SESSION['id']}'");
+    $r_2=pg_fetch_array($q_2);
     if($id==$r_2['id']){
-        $qu=mysql_query("SELECT * FROM profile WHERE id_user='{$_SESSION['id']}'");
-        $res=mysql_fetch_array($qu);
+        $qu=pg_query($db_connect, "SELECT * FROM profile WHERE id_user='{$_SESSION['id']}'");
+        $res=pg_fetch_array($qu);
             echo"<div id=header><div class=exit><a href=/exit>Выйти</a></div></div>
              <div id=leftcol>";
              include("html/user_menu.php");
@@ -39,20 +41,20 @@ top("Социальная сеть");
              echo"<div id=left_container><div id=photo><img src=".$r_2['avatar']." width=200 height=260><button id=button>Загрузить фото</button></div>";
            echo"<div id=friends>";
            
-            $informer=mysql_query("SELECT count(id) FROM friends WHERE id_user='{$_SESSION['id']}' OR id_user_2='$id' AND status='2'");
-    $row=mysql_fetch_array($informer, MYSQL_NUM);
+            $informer=pg_query($db_connect, "SELECT count(id) FROM friends WHERE id_user='{$_SESSION['id']}' OR id_user_2='$id' AND status='2'");
+    $row=pg_fetch_array($informer, PGSQL_NUM);
            echo"<b>Мои друзья&nbsp;&nbsp;&nbsp;".$row[0]."</b><br><br>";
            
-            $qu_2=mysql_query("SELECT * FROM friends WHERE id_user_2='{$_SESSION['id']}' AND status='2'");
-          while($ru_2=mysql_fetch_array($qu_2)){
+            $qu_2=pg_query($db_connect, "SELECT * FROM friends WHERE id_user_2='{$_SESSION['id']}' AND status='2'");
+          while($ru_2=pg_fetch_array($qu_2)){
           $id=$r_2['id'];
               $id_user=$ru_2['id_user'];
              $id_user_2=$ru_2['id_user_2'];
             $status=$ru_2['status'];
     
      
-          $qu_3=mysql_query("SELECT * FROM users WHERE id='$id_user'");
-       while($ru_3=mysql_fetch_array($qu_3)){
+          $qu_3=pg_query($db_connect, "SELECT * FROM users WHERE id='$id_user'");
+       while($ru_3=pg_fetch_array($qu_3)){
           $id=$ru_3['id'];
               $name=$ru_3['name'];
            
@@ -66,16 +68,16 @@ top("Социальная сеть");
 
        }
           }
-           $qu_6=mysql_query("SELECT * FROM friends WHERE id_user='{$_SESSION['id']}' AND status='2'");
-          while($ru_6=mysql_fetch_array($qu_6)){
+           $qu_6=pg_query($db_connect, "SELECT * FROM friends WHERE id_user='{$_SESSION['id']}' AND status='2'");
+          while($ru_6=pg_fetch_array($qu_6)){
           $id=$ru_6['id'];
               $id_user=$ru_6['id_user'];
              $id_user_2=$ru_6['id_user_2'];
             $status=$ru_6['status'];
     
      
-          $qu_7=mysql_query("SELECT * FROM users WHERE id='$id_user_2'");
-       while($ru_7=mysql_fetch_array($qu_7)){
+          $qu_7=pg_query($db_connect, "SELECT * FROM users WHERE id='$id_user_2'");
+       while($ru_7=pg_fetch_array($qu_7)){
           $id=$ru_7['id'];
               $name=$ru_7['name'];
            
@@ -123,12 +125,12 @@ top("Социальная сеть");
                   echo"<div id=gallereya></div>";
                     include("form/novogo.php");
                    echo"<div id=novogo>";
-                   $n=mysql_query("SELECT id, id_user, poluchatel, text, data, status FROM novogo WHERE poluchatel='{$_SESSION['id']}' ORDER BY id DESC");
-                   while($novogo=mysql_fetch_array($n)){
+                   $n=pg_query($db_connect, "SELECT id, id_user, poluchatel, text, data, status FROM novogo WHERE poluchatel='{$_SESSION['id']}' ORDER BY id DESC");
+                   while($novogo=pg_fetch_array($n)){
                        $id_user=$novogo['id_user'];
                        $poluchatel=$novogo['poluchatel'];
-                       $n_2=mysql_query("SELECT id, name, lastname, avatar FROM users WHERE id='{$novogo['id_user']}'");
-                       while($novogo_2=mysql_fetch_array($n_2)){
+                       $n_2=pg_query($db_connect, "SELECT id, name, lastname, avatar FROM users WHERE id='{$novogo['id_user']}'");
+                       while($novogo_2=pg_fetch_array($n_2)){
                             if(!$novogo_2['avatar']){
                  $novogo_2['avatar']="/file/1.jpg width=60 height=60";
              }
@@ -153,10 +155,10 @@ top("Социальная сеть");
                         echo"</div></div>";
                               
 }else{
-  $profile_user=mysql_query("SELECT id, name, lastname, country, city, avatar FROM users WHERE id='$id'");
-   $r_profile_user=mysql_fetch_array($profile_user);
-   $query_2=mysql_query("SELECT * FROM profile WHERE id_user='{$r_profile_user['id']}'");
-        $result_2=mysql_fetch_array($query_2);
+  $profile_user=pg_query($db_connect, "SELECT id, name, lastname, country, city, avatar FROM users WHERE id='$id'");
+   $r_profile_user=pg_fetch_array($profile_user);
+   $query_2=pg_query($db_connect, "SELECT * FROM profile WHERE id_user='{$r_profile_user['id']}'");
+        $result_2=pg_fetch_array($query_2);
         
         echo"<div id=popur_messages>"; include("form/messages.php"); echo"</div>";
         echo"<div id=hover></div>";
@@ -173,20 +175,20 @@ top("Социальная сеть");
             echo"</div>";
                        echo"<div id=friends_2>";
                        
-                        $informer_2=mysql_query("SELECT count(id) FROM friends WHERE id_user='{$r_profile_user['id']}' OR id_user_2='$id' AND status='2'");
-    $row_2=mysql_fetch_array($informer_2, MYSQL_NUM);
+                        $informer_2=pg_query($db_connect, "SELECT count(id) FROM friends WHERE id_user='{$r_profile_user['id']}' OR id_user_2='$id' AND status='2'");
+    $row_2=pg_fetch_array($informer_2, MYSQL_NUM);
                         echo"<b>Друзья&nbsp;&nbsp;&nbsp;".$row_2[0]."</b><br><br>";
            
-            $qu_4=mysql_query("SELECT * FROM friends WHERE id_user_2='{$r_profile_user['id']}' AND status='2'");
-          while($ru_4=mysql_fetch_array($qu_4)){
+            $qu_4=pg_query($db_connect, "SELECT * FROM friends WHERE id_user_2='{$r_profile_user['id']}' AND status='2'");
+          while($ru_4=pg_fetch_array($qu_4)){
           $id=$ru_4['id'];
               $id_user=$ru_4['id_user'];
              $id_user_2=$ru_4['id_user_2'];
             $status=$ru_4['status'];
 
      
-          $qu_5=mysql_query("SELECT * FROM users WHERE id='$id_user'");
-       while($ru_5=mysql_fetch_array($qu_5)){
+          $qu_5=pg_query($db_connect, "SELECT * FROM users WHERE id='$id_user'");
+       while($ru_5=pg_fetch_array($qu_5)){
           $id=$ru_5['id'];
               $name=$ru_5['name'];
            
@@ -201,16 +203,16 @@ top("Социальная сеть");
        }
           }
           
-           $qu_8=mysql_query("SELECT * FROM friends WHERE id_user='{$r_profile_user['id']}' AND status='2'");
-          while($ru_8=mysql_fetch_array($qu_8)){
+           $qu_8=pg_query($db_connect, "SELECT * FROM friends WHERE id_user='{$r_profile_user['id']}' AND status='2'");
+          while($ru_8=pg_fetch_array($qu_8)){
           $id=$ru_8['id'];
               $id_user=$ru_8['id_user'];
              $id_user_2=$ru_8['id_user_2'];
             $status=$ru_8['status'];
     
      
-          $qu_9=mysql_query("SELECT * FROM users WHERE id='$id_user_2'");
-       while($ru_9=mysql_fetch_array($qu_9)){
+          $qu_9=pg_query($db_connect, "SELECT * FROM users WHERE id='$id_user_2'");
+       while($ru_9=pg_fetch_array($qu_9)){
           $id=$ru_9['id'];
               $name=$ru_9['name'];
            
@@ -257,15 +259,15 @@ top("Социальная сеть");
                      include("form/novogo_2.php");
                    echo"<div id=novogo>";
                    
-                        $n_3=mysql_query("SELECT id, id_user, poluchatel, text, data, status FROM novogo WHERE poluchatel='{$_GET['id']}' ORDER BY id DESC");
-                   while($novogo_3=mysql_fetch_array($n_3)){
+                        $n_3=pg_query($db_connect, "SELECT id, id_user, poluchatel, text, data, status FROM novogo WHERE poluchatel='{$_GET['id']}' ORDER BY id DESC");
+                   while($novogo_3=pg_fetch_array($n_3)){
                        $id=$novogo_3['id'];
                              $poluchatel=$novogo_3['poluchatel'];
                                    $id_user=$novogo_3['id_user'];
                                          $text=$novogo_3['text'];
                                                $data=$novogo_3['data'];
-                       $n_4=mysql_query("SELECT id, name, lastname, avatar FROM users WHERE id='{$novogo_3['id_user']}'");
-                       while($novogo_4=mysql_fetch_array($n_4)){
+                       $n_4=pg_query($db_connect, "SELECT id, name, lastname, avatar FROM users WHERE id='{$novogo_3['id_user']}'");
+                       while($novogo_4=pg_fetch_array($n_4)){
                             if(!$novogo_4['avatar']){
                  $novogo_4['avatar']="/file/1.jpg width=60 height=60";
              }

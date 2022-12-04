@@ -1,10 +1,12 @@
 <?top("Мои сообщения");?>
 <?
+$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
+
 if(!$_SESSION['email'] AND !$_SESSION['password']){
     echo"<meta http-equiv='refresh' content='0, url=/index'>";
 }else{
-    $q=mysql_query("SELECT * FROM users  WHERE id='{$_SESSION['id']}'");
-    $r=mysql_fetch_array($q);
+    $q=pg_query($db_connect, "SELECT * FROM users  WHERE id='{$_SESSION['id']}'");
+    $r=pg_fetch_array($q);
     
 
 
@@ -31,8 +33,8 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
    switch($act){
        default:
                echo"<h3>Диалоги</h3><br><br><br><br><hr>";
-            $q_2=mysql_query("SELECT * FROM message WHERE poluchatel='{$r['id']}' ORDER BY id DESC");
-               while($r_2=mysql_fetch_array($q_2)){
+            $q_2=pg_query($db_connect, "SELECT * FROM message WHERE poluchatel='{$r['id']}' ORDER BY id DESC");
+               while($r_2=pg_fetch_array($q_2)){
                      $id=$r_2['id'];
                      $author=$r_2['author'];
                         $poluchatel=$r_2['poluchatel'];
@@ -40,8 +42,8 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
                             $data=$r_2['data'];
               
                             
-                            $q_3=mysql_query("SELECT * FROM users WHERE id='$author'");
-               while($r_3=mysql_fetch_array($q_3)){
+                            $q_3=pg_query($db_connect, "SELECT * FROM users WHERE id='$author'");
+               while($r_3=pg_fetch_array($q_3)){
                    $id=$r_3['id'];
                                 $name=$r_3['name'];
                                  $lastname=$r_3['lastname'];
@@ -72,8 +74,8 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
            case"vxod":
                  $vxod=$_GET['vxod'];
                   echo"<h3>Входящие сообщение</h3><br><br><br><br><hr>";
-                  $q_2=mysql_query("SELECT id, author, poluchatel, mess, data, ready FROM message WHERE poluchatel='{$r['id']}' ORDER BY id DESC");
-               while($r_2=mysql_fetch_array($q_2)){
+                  $q_2=pg_query($db_connect, "SELECT id, author, poluchatel, mess, data, ready FROM message WHERE poluchatel='{$r['id']}' ORDER BY id DESC");
+               while($r_2=pg_fetch_array($q_2)){
                      $id=$r_2['id'];
                      $author=$r_2['author'];
                         $poluchatel=$r_2['poluchatel'];
@@ -81,8 +83,8 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
                             $data=$r_2['data'];
               $ready=$r_2['ready'];
                             
-                            $q_3=mysql_query("SELECT * FROM users WHERE id='$author'");
-               while($r_3=mysql_fetch_array($q_3)){
+                            $q_3=pg_query($db_connect, "SELECT * FROM users WHERE id='$author'");
+               while($r_3=pg_fetch_array($q_3)){
                    $id=$r_3['id'];
                                 $name=$r_3['name'];
                                  $lastname=$r_3['lastname'];
@@ -106,8 +108,8 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
                   case"isxod":
                  $isxod=$_GET['isxod'];
                     echo"<h3>Исходящие сообщение</h3><br><br><br><br><hr>";
-                 $q_4=mysql_query("SELECT * FROM message WHERE author='{$r['id']}' ORDER BY id DESC");
-               while($r_4=mysql_fetch_array($q_4)){
+                 $q_4=pg_query($db_connect, "SELECT * FROM message WHERE author='{$r['id']}' ORDER BY id DESC");
+               while($r_4=pg_fetch_array($q_4)){
                      $id=$r_4['id'];
                      $author=$r_4['author'];
                         $poluchatel=$r_4['poluchatel'];
@@ -115,8 +117,8 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
                             $data=$r_4['data'];
               
                             
-                            $q_5=mysql_query("SELECT * FROM users WHERE id='$author'");
-               while($r_5=mysql_fetch_array($q_5)){
+                            $q_5=pg_query($db_connect, "SELECT * FROM users WHERE id='$author'");
+               while($r_5=pg_fetch_array($q_5)){
                    $id=$r_5['id'];
                                 $name=$r_5['name'];
                                  $lastname=$r_5['lastname'];
@@ -141,8 +143,8 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
                 case"read_1":
                  $read_1=$_GET['read_1'];
                     echo"<h3>Прочитанные сообщение</h3><br><br><br><br><hr>";
-                  $q_6=mysql_query("SELECT * FROM message WHERE poluchatel='{$r['id']}' AND ready='1' ORDER BY id DESC");
-               while($r_6=mysql_fetch_array($q_6)){
+                  $q_6=pg_query($db_connect, "SELECT * FROM message WHERE poluchatel='{$r['id']}' AND ready='1' ORDER BY id DESC");
+               while($r_6=pg_fetch_array($q_6)){
                      $id=$r_6['id'];
                      $author=$r_6['author'];
                         $poluchatel=$r_6['poluchatel'];
@@ -150,8 +152,8 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
                             $data=$r_6['data'];
               
                             
-                            $q_7=mysql_query("SELECT * FROM users WHERE id='$author'");
-               while($r_7=mysql_fetch_array($q_7)){
+                            $q_7=pg_query($db_connect, "SELECT * FROM users WHERE id='$author'");
+               while($r_7=pg_fetch_array($q_7)){
                    $id=$r_7['id'];
                                 $name=$r_7['name'];
                                  $lastname=$r_7['lastname'];
@@ -170,8 +172,8 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
                 case"read_0":
                  $read_0=$_GET['read_0'];
                     echo"<h3>Не прочитанные сообщение</h3><br><br><br><br><hr>";
-                  $q_8=mysql_query("SELECT * FROM message WHERE poluchatel='{$r['id']}' AND ready='0' ORDER BY id DESC");
-               while($r_8=mysql_fetch_array($q_8)){
+                  $q_8=pg_query($db_connect, "SELECT * FROM message WHERE poluchatel='{$r['id']}' AND ready='0' ORDER BY id DESC");
+               while($r_8=pg_fetch_array($q_8)){
                      $id=$r_8['id'];
                      $author=$r_8['author'];
                         $poluchatel=$r_8['poluchatel'];
@@ -179,8 +181,8 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
                             $data=$r_8['data'];
               
                             
-                            $q_9=mysql_query("SELECT * FROM users WHERE id='$author'");
-               while($r_9=mysql_fetch_array($q_9)){
+                            $q_9=pg_query($db_connect, "SELECT * FROM users WHERE id='$author'");
+               while($r_9=pg_fetch_array($q_9)){
                    $id=$r_9['id'];
                                 $name=$r_9['name'];
                                  $lastname=$r_9['lastname'];
@@ -205,13 +207,13 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
                    $inbox=$_GET['inbox'];
                    if(isset($_GET['id'])){
                      $id=$_GET['id'];
-             $s=mysql_query("SELECT * FROM message WHERE poluchatel='{$_SESSION['id']}'");
-             $su=mysql_fetch_array($s);
-                   $query_2=mysql_query("SELECT * FROM users WHERE id='{$_GET['id']}'");
-                   $result_2=mysql_fetch_array($query_2);
+             $s=pg_query($db_connect, "SELECT * FROM message WHERE poluchatel='{$_SESSION['id']}'");
+             $su=pg_fetch_array($s);
+                   $query_2=pg_query($db_connect,"SELECT * FROM users WHERE id='{$_GET['id']}'");
+                   $result_2=pg_fetch_array($query_2);
                  if($su['poluchatel']==$_SESSION['id']){
-               mysql_query("UPDATE message SET ready='1' WHERE author='{$_GET['id']}' AND poluchatel='{$r['id']}'");
-                mysql_query("UPDATE message SET ready='1' WHERE poluchatel='{$_GET['id']}' AND author='{$r['id']}'");
+                     pg_query($db_connect,"UPDATE message SET ready='1' WHERE author='{$_GET['id']}' AND poluchatel='{$r['id']}'");
+                     pg_query($db_connect,"UPDATE message SET ready='1' WHERE poluchatel='{$_GET['id']}' AND author='{$r['id']}'");
                    
                  }
                    }
@@ -219,14 +221,14 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
                echo"<div id=novosti_3>";
               // if(isset($_GET['id'])){
                    //$id=$_GET['id'];
-                $qur=mysql_query("SELECT * FROM dialog WHERE poluchatel='{$_SESSION['id']}' AND author='{$_GET['id']}' OR poluchatel='{$_GET['id']}' AND author='{$_SESSION['id']}'");
-               while($ru=mysql_fetch_array($qur)){
+                $qur=pg_query($db_connect,"SELECT * FROM dialog WHERE poluchatel='{$_SESSION['id']}' AND author='{$_GET['id']}' OR poluchatel='{$_GET['id']}' AND author='{$_SESSION['id']}'");
+               while($ru=pg_fetch_array($qur)){
                    $author=$ru['author'];
                          $poluchatel=$ru['poluchatel'];
                          $mess=$ru['mess'];
                          $data=$ru['data'];
-                $qu_2=mysql_query("SELECT * FROM users WHERE id='$author'");
-                while($res_2=mysql_fetch_array($qu_2)){
+                $qu_2=pg_query($db_connect,"SELECT * FROM users WHERE id='$author'");
+                while($res_2=pg_fetch_array($qu_2)){
                     $avatar=$res_2['avatar'];
                       if(!$res_2['avatar']){
                  $res_2['avatar']="/file/1.jpg width=60 height=60";

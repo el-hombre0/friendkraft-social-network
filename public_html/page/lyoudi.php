@@ -1,10 +1,12 @@
 <?top("Люди");?>
 <?
+$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
+
 if(!$_SESSION['email'] AND !$_SESSION['password']){
     echo"<meta http-equiv='refresh' content='0, url=/index'>";
 }else{
-    $q=mysql_query("SELECT * FROM users  WHERE id='{$_SESSION['id']}'");
-    $r=mysql_fetch_array($q);
+    $q=pg_query($db_connect, "SELECT * FROM users  WHERE id='{$_SESSION['id']}'");
+    $r=pg_fetch_array($q);
    
 
 

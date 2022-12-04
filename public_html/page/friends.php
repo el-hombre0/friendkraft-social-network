@@ -1,10 +1,12 @@
 <?top("Мои друзья");?>
 <?
+$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
+
 if(!$_SESSION['email'] AND !$_SESSION['password']){
     echo"<meta http-equiv='refresh' content='0, url=/index'>";
 }else{
-    $query=mysql_query("SELECT * FROM users WHERE id='{$_SESSION['id']}'");
-    $result=mysql_fetch_array($query);
+    $query=pg_query($db_connect, "SELECT * FROM users WHERE id='{$_SESSION['id']}'");
+    $result=pg_fetch_array($query);
   
 
 
@@ -21,16 +23,16 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
   switch($drug){
       default:
 //echo"<div id=zayavka>";
-          $q=mysql_query("SELECT * FROM friends WHERE id_user_2='{$_SESSION['id']}' AND status='1'");
-          while($r=mysql_fetch_array($q)){
+          $q=pg_query($db_connect, "SELECT * FROM friends WHERE id_user_2='{$_SESSION['id']}' AND status='1'");
+          while($r=pg_fetch_array($q)){
           $id=$r['id'];
               $id_user=$r['id_user'];
              $id_user_2=$r['id_user_2'];
             $status=$r['status'];
     
      
-          $q_1=mysql_query("SELECT * FROM users WHERE id='$id_user'");
-       while($r_1=mysql_fetch_array($q_1)){
+          $q_1=pg_query($db_connect, "SELECT * FROM users WHERE id='$id_user'");
+       while($r_1=pg_fetch_array($q_1)){
           $id=$r_1['id'];
               $name=$r_1['name'];
              $lastname=$r_1['lastname'];
@@ -46,16 +48,16 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
           }
           echo"<br>";
           echo"<div id=zayavka><center><b><font color=dimgray size=6>Мои друзья</font></b></center><hr>";
-           $q_2=mysql_query("SELECT * FROM friends WHERE id_user_2='{$_SESSION['id']}' AND status='2'");
-          while($r_2=mysql_fetch_array($q_2)){
+           $q_2=pg_query($db_connect, "SELECT * FROM friends WHERE id_user_2='{$_SESSION['id']}' AND status='2'");
+          while($r_2=pg_fetch_array($q_2)){
           $id=$r_2['id'];
               $id_user=$r_2['id_user'];
              $id_user_2=$r_2['id_user_2'];
             $status=$r_2['status'];
     
      
-          $q_3=mysql_query("SELECT * FROM users WHERE id='$id_user'");
-       while($r_3=mysql_fetch_array($q_3)){
+          $q_3=pg_query($db_connect, "SELECT * FROM users WHERE id='$id_user'");
+       while($r_3=pg_fetch_array($q_3)){
           $id=$r_3['id'];
               $name=$r_3['name'];
              $lastname=$r_3['lastname'];
@@ -71,16 +73,16 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
           }
           
           
-           $qu_2=mysql_query("SELECT * FROM friends WHERE id_user='{$_SESSION['id']}' AND status='2'");
-          while($ru_2=mysql_fetch_array($qu_2)){
+           $qu_2=pg_query($db_connect, "SELECT * FROM friends WHERE id_user='{$_SESSION['id']}' AND status='2'");
+          while($ru_2=pg_fetch_array($qu_2)){
           $id=$r_2['id'];
               $id_user=$ru_2['id_user'];
              $id_user_2=$ru_2['id_user_2'];
             $status=$ru_2['status'];
     
      
-          $qu_3=mysql_query("SELECT * FROM users WHERE id='$id_user_2'");
-       while($ru_3=mysql_fetch_array($qu_3)){
+          $qu_3=pg_query($db_connect, "SELECT * FROM users WHERE id='$id_user_2'");
+       while($ru_3=pg_fetch_array($qu_3)){
           $id=$ru_3['id'];
               $name=$ru_3['name'];
              $lastname=$ru_3['lastname'];
@@ -100,18 +102,18 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
           case "show":
               $show=$_GET['show'];
               if(isset($_GET['id'])){
-                  $q_4=mysql_query("SELECT * FROM friends WHERE id='$id'");
-                  $r_4=mysql_fetch_array($q_4);
-                  mysql_query("UPDATE friends SET status='3' WHERE id='{$_GET['id']}'");
+                  $q_4=pg_query($db_connect, "SELECT * FROM friends WHERE id='$id'");
+                  $r_4=pg_fetch_array($q_4);
+                  pg_query($db_connect, "UPDATE friends SET status='3' WHERE id='{$_GET['id']}'");
                    echo"<meta http-equiv='refresh' content='0 url=/friends'>"; 
               }
               break;
               case "prin":
               $prin=$_GET['prin'];
               if(isset($_GET['id'])){
-                  $q_4=mysql_query("SELECT * FROM friends WHERE id='$id'");
-                  $r_4=mysql_fetch_array($q_4);
-                  mysql_query("UPDATE friends SET status='2' WHERE id='{$_GET['id']}'");
+                  $q_4=pg_query($db_connect, "SELECT * FROM friends WHERE id='$id'");
+                  $r_4=pg_fetch_array($q_4);
+                  pg_query($db_connect, "UPDATE friends SET status='2' WHERE id='{$_GET['id']}'");
                    echo"<meta http-equiv='refresh' content='0 url=/friends'>"; 
               }
               break;
@@ -119,16 +121,16 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
                   $podpischiki=$_GET['podpischiki'];
                 
                    echo"<div id=zayavka><center><b><font color=dimgray size=6>Мои подписчики</font></b></center><hr>";
-                    $q_5=mysql_query("SELECT * FROM friends WHERE id_user_2='{$_SESSION['id']}' AND status='3'");
-          while($r_5=mysql_fetch_array($q_5)){
+                    $q_5=pg_query($db_connect, "SELECT * FROM friends WHERE id_user_2='{$_SESSION['id']}' AND status='3'");
+          while($r_5=pg_fetch_array($q_5)){
           $id=$r_5['id'];
               $id_user=$r_5['id_user'];
              $id_user_2=$r_5['id_user_2'];
             $status=$r_5['status'];
     
      
-          $q_6=mysql_query("SELECT * FROM users WHERE id='$id_user'");
-       while($r_6=mysql_fetch_array($q_6)){
+          $q_6=pg_query($db_connect, "SELECT * FROM users WHERE id='$id_user'");
+       while($r_6=pg_fetch_array($q_6)){
           $id=$r_6['id'];
               $name=$r_6['name'];
              $lastname=$r_6['lastname'];
