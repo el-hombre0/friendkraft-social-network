@@ -1,9 +1,11 @@
 <?
+$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
+
 if(!$_SESSION['email'] AND !$_SESSION['password']){
     
 }else{
-    $q=mysql_query("SELECT * FROM users WHERE id='{$_SESSION['id']}'");
-    $r=mysql_fetch_array($q);
+    $q=pg_query($db_connect, "SELECT * FROM users WHERE id='{$_SESSION['id']}'");
+    $r=pg_fetch_array($q);
 }
 
 echo"<div class=popur_top_messages><div class=text>Новое сообщение</div>

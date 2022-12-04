@@ -1,12 +1,13 @@
 <?
+$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 if(!$_SESSION['email'] AND !$_SESSION['password']){
     
 }else{
-  $q=mysql_query("SELECT * FROM users WHERE id='{$_SESSION['id']}'");
-      $r=mysql_fetch_array($q);
+  $q=pg_query($db_connect, "SELECT * FROM users WHERE id='{$_SESSION['id']}'");
+      $r=pg_fetch_array($q);
       $country=$r['country'];
-      $q_2=mysql_query("SELECT * FROM profile WHERE id_user='{$_SESSION['id']}'");
-      $r_2=mysql_fetch_array($q_2);
+      $q_2=pg_query($db_connect, "SELECT * FROM profile WHERE id_user='{$_SESSION['id']}'");
+      $r_2=pg_fetch_array($q_2);
      
 
 }

@@ -1,4 +1,5 @@
 <?
+$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 if(isset($_GET['act'])AND isset($_GET['email'])){
  $act=$_GET['act']; 
  $act=htmlspecialchars($act);
@@ -6,11 +7,11 @@ if(isset($_GET['act'])AND isset($_GET['email'])){
   $email=$_GET['email'];
    $email=htmlspecialchars($email);
     $email=stripslashes($email);
-    $activ=mysql_query("SELECT id FROM users WHERE email='$email'");
-    $id_activ=mysql_fetch_array($activ);
+    $activ=pg_query($db_connect, "SELECT id FROM users WHERE email='$email'");
+    $id_activ=pg_fetch_array($activ);
     $activation=md5($id_activ['id']);
      if($activation=$act){
-         mysql_query("UPDATE users SET activation='1' WHERE email='$email'");
+         pg_query($db_connect, "UPDATE users SET activation='1' WHERE email='$email'");
          echo"<b><center><font size=4 color=green>Вы успешно активировали свой аккаунт, можете войти вводя свой E-mail и пароль<font></center></b>";
      }
 }
