@@ -1,6 +1,6 @@
 FROM jaanonim/docker-apache2-php-postgresql
-WORKDIR /var/www/html/
-COPY . .
+# a2enmod rewrite
+
 
 
 

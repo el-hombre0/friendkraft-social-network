@@ -50,7 +50,7 @@ elseif($Page=='del_novogo')include('setting/del/del_novogo.php');
 $connect_data = "host=localhost port=5432 dbname=postgres user=postgres password=password";
 $db_connect = pg_connect($connect_data);
 $q=pg_query($db_connect, "SELECT id, country FROM users WHERE id='{$_SESSION['id']}'");
-$p=pg_fetch_assoc($q);
+$p=pg_fetch_array($q);
 //$q=mysql_query("SELECT id, country FROM users WHERE id='{$_SESSION['id']}'");
 //$p=mysql_fetch_array($q);
  function UserCountry($p1){

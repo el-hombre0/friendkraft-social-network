@@ -2,12 +2,13 @@ version: '3.9'
 services:
   ap_php_pgsql:
     build:
-     context: .
-     dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile
     volumes:
-      - './database:/docker-entrypoint-initdb.d/'
+      - './app:/var/www/html'
     ports:
       - '8080:80'
+      - '5432:5432'
 
   pgadmin:
     container_name: pgadmin

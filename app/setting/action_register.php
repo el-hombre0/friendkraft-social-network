@@ -33,7 +33,7 @@ if(isset($_POST)){
             echo"<b><center><font size=4 color=red>пользователь с таким E-mail уже зарегистрированн</font></center></b>";
         }else{
             $q="INSERT INTO users(email, password, data, ip, activation)VALUES('$email','$password', '$data', '$ip', '0')";
-            $result=pg_query($q)or die (mysql_error());
+            $result=pg_query($q)or die (pg_result_error());
             $id_active=pg_fetch_array($activ);
             $activation=md5($id_active['id']);
             $subject="Подтверждение регистрации";
