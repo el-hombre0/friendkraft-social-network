@@ -3,7 +3,7 @@ $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres
 
 if(!$_SESSION['email'] AND !$_SESSION['password']){
 top("Социальная сеть");
-        echo"<div id=header>Шапка</div>
+        echo"<div id=header>FriendKraft</div>
          <div id=leftcol>";include("form/login_form.php"); include("form/register_form.php");echo"</div>
           <div id=content>";
               include("html/content.php");
@@ -176,7 +176,7 @@ top("Социальная сеть");
                        echo"<div id=friends_2>";
                        
                         $informer_2=pg_query($db_connect, "SELECT count(id) FROM friends WHERE id_user='{$r_profile_user['id']}' OR id_user_2='$id' AND status='2'");
-    $row_2=pg_fetch_array($informer_2, MYSQL_NUM);
+    $row_2=pg_fetch_array($informer_2, PGSQL_NUM);
                         echo"<b>Друзья&nbsp;&nbsp;&nbsp;".$row_2[0]."</b><br><br>";
            
             $qu_4=pg_query($db_connect, "SELECT * FROM friends WHERE id_user_2='{$r_profile_user['id']}' AND status='2'");

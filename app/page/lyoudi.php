@@ -20,8 +20,8 @@ if(!$_SESSION['email'] AND !$_SESSION['password']){
           echo"</div>
           <div id=novosti><div class=lyoudi><h3>Люди</h3><br><br><br><br><hr>";
          
-    $q_2=mysql_query("SELECT * FROM users");
-    while($r_2=mysql_fetch_array($q_2)){
+    $q_2=pg_query($db_connect,"SELECT * FROM users");
+    while($r_2=pg_fetch_array($q_2)){
          if(!$r_2['avatar']){
                  $r_2['avatar']="/file/1.jpg width=200 height=260";
              }

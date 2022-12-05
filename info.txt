@@ -1,13 +1,6 @@
-RewriteEngine on
-RewriteBase /
-Options All -Indexes
-RewriteCond %{REQUEST_FILENAME} -s [OR]
-RewriteCond %{REQUEST_FILENAME} -l [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^resource/(.*)$ resource/$1 [L]
-RewriteRule ^.*$ [NC,L]
-RewriteRule ^.*$ index.php [NC,L]
-
+docker exec -u 0 -it 39d5a8128d89 bash
+a2enmod rewrite
+service apache2 restart
 
 ///////////////////Old dockerfile///////////////////
 
@@ -74,25 +67,3 @@ services:
 
 FROM postgres:latest
 ENV POSTGRES_USER=postgres POSTGRES_PASSWORD=password POSTGRES_DB=postgres
-
-
-RewriteEngine on
-RewriteBase /
-Options All -Indexes
-RewriteCond %{REQUEST_FILENAME} -s [OR]
-RewriteCond %{REQUEST_FILENAME} -l [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^resource/(.*)$ resource/$1 [L]
-RewriteRule ^.*$ [NC,L]
-RewriteRule ^.*$ index.php [NC,L]
-
-
-
-
-AddType application/x-httpd-php .js
-
-AddHandler x-httpd-php5 .js
-
-<FilesMatch "\.(js|php)$">
-SetHandler application/x-httpd-php
-</FilesMatch>
