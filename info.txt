@@ -67,3 +67,5 @@ services:
 
 FROM postgres:latest
 ENV POSTGRES_USER=postgres POSTGRES_PASSWORD=password POSTGRES_DB=postgres
+
+1q2w3e4r
