@@ -1,5 +1,8 @@
-<? top("новости"); ?>
-<?
+<?php
+top("новости");
+?>
+
+<?php
 $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 
 if (!$_SESSION['email'] and !$_SESSION['password']) {
@@ -11,19 +14,22 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
         include("form/inform_form.php");
     }
 
-
-    echo "<div id=header>Шапка</div>
-  <div id=leftcol>";
+    echo "
+        <div id=header>Шапка</div>
+        <div id=leftcol>
+    ";
 
     include("html/user_menu.php");
 
-    echo "</div>
-          <div id=novosti>
-       новости
-          </div>
-          <div id=rightcol>
-        
-          </div>";
-
+    echo "
+    </div>
+    <div id=novosti>
+        новости
+    </div>
+    <div id=rightcol>
+    </div>
+    ";
 }
-bottom(); ?>
+
+bottom();
+?>

@@ -1,16 +1,13 @@
-<?
-
+<?php
+$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 if (!$_SESSION['email'] and !$_SESSION['password']) {
 
 } else {
     $email = $_SESSION['email'];
     $password = $_SESSION['password'];
-
-    $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
     $q_user = pg_query($db_connect, "SELECT id FROM users WHERE id='$id'");
     $r_user = pg_fetch_array($q_user);
     $id = $r_user['id'];
-
 }
 if (isset($_POST['file'])) {
 
@@ -49,4 +46,3 @@ if (isset($_POST['file'])) {
 
 
 }
-?>

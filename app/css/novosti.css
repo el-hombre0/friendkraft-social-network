@@ -1,24 +1,25 @@
- #novosti{
-    width:630px;
-    margin-top:10px;
-    float:left;
-    margin-left:10px;
-    border-radius:7px;
+#novosti {
+    width: 630px;
+    margin-top: 10px;
+    float: left;
+    margin-left: 10px;
+    border-radius: 7px;
 
-    
-     
-} 
-#rightcol{
-    width:245px;
-  float:right;
-    margin-right:76px;
-    border-radius:7px;
-    margin-top:10px;
-       padding:10px;
-        background:#fff;
-     }
-    #novosti h2{
-    margin-left:250px;
-    font-size:30px;
-    color:#696969;
+
+}
+
+#rightcol {
+    width: 245px;
+    float: right;
+    margin-right: 76px;
+    border-radius: 7px;
+    margin-top: 10px;
+    padding: 10px;
+    background: #fff;
+}
+
+#novosti h2 {
+    margin-left: 250px;
+    font-size: 30px;
+    color: #696969;
 }

@@ -1,10 +1,10 @@
 <?php
 echo "
     <!DOCTYPE html>
-    <html>
+    <html lang=\"en\">
         <head>
             <title>" . $title . "</title>
-            
+            <meta charset=\"UTF-8\">
             <script type=text/javascript src= https://code.jquery.com/jquery-1.11.2.js></script>
             <script type=text/javascript src=/script/js.js></script>
             <script type=text/javascript src=/script/password.js></script>

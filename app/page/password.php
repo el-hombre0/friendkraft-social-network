@@ -1,18 +1,22 @@
-<? top("Востановление пароля"); ?>
+<?php
+top("Востановление пароля");
+?>
 
-    <div id="header"></div>
-    <div id="leftcol">
+<div id="header"></div>
 
-    </div>
-    <div id="novosti">
-        <?
+<div id="leftcol">
+</div>
+
+<div id="novosti">
+    <?php
         include("form/password.php");
-        ?>
+    ?>
+</div>
 
-    </div>
-    <div id="rightcol">
-
-    </div>
+<div id="rightcol">
+</div>
 
 
-<? bottom(); ?>
+<?php
+bottom();
+?>

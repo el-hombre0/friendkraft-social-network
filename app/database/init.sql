@@ -14,16 +14,16 @@
 -- ///////////////////////////////////////  Пользователи  ///////////////////////////////////////
 CREATE TABLE IF NOT EXISTS users
 (
-    id serial NOT NULL,
-    email text NOT NULL,
-    password text NOT NULL,
-    data text,
-    name text,
-    lastname text,
-    country text,
-    city text,
-    avatar text,
-    ip text,
+    id         serial NOT NULL,
+    email      text   NOT NULL,
+    password   text   NOT NULL,
+    data       text,
+    name       text,
+    lastname   text,
+    country    text,
+    city       text,
+    avatar     text,
+    ip         text,
     activation text,
     CONSTRAINT users_pkey PRIMARY KEY (id)
 );
@@ -32,23 +32,23 @@ CREATE TABLE IF NOT EXISTS users
 
 CREATE TABLE IF NOT EXISTS public.profile
 (
-    id serial NOT NULL,
-    id_user integer NOT NULL,
+    id        serial  NOT NULL,
+    id_user   integer NOT NULL,
     polojenie text COLLATE pg_catalog."default",
-    sex text COLLATE pg_catalog."default",
-    day integer,
-    monday text COLLATE pg_catalog."default",
-    year integer,
-    film text COLLATE pg_catalog."default",
-    music text COLLATE pg_catalog."default",
-    tele text COLLATE pg_catalog."default",
-    book text COLLATE pg_catalog."default",
-    game text COLLATE pg_catalog."default",
-    osebe text COLLATE pg_catalog."default",
-    phone text COLLATE pg_catalog."default",
-    phone_2 text COLLATE pg_catalog."default",
-    skype text COLLATE pg_catalog."default",
-    sait text COLLATE pg_catalog."default",
+    sex       text COLLATE pg_catalog."default",
+    day       integer,
+    monday    text COLLATE pg_catalog."default",
+    year      integer,
+    film      text COLLATE pg_catalog."default",
+    music     text COLLATE pg_catalog."default",
+    tele      text COLLATE pg_catalog."default",
+    book      text COLLATE pg_catalog."default",
+    game      text COLLATE pg_catalog."default",
+    osebe     text COLLATE pg_catalog."default",
+    phone     text COLLATE pg_catalog."default",
+    phone_2   text COLLATE pg_catalog."default",
+    skype     text COLLATE pg_catalog."default",
+    sait      text COLLATE pg_catalog."default",
     CONSTRAINT profile_pkey PRIMARY KEY (id_user)
 )
     WITH (
@@ -63,12 +63,12 @@ ALTER TABLE IF EXISTS public.profile
 
 CREATE TABLE IF NOT EXISTS public.message
 (
-    id integer NOT NULL DEFAULT nextval('message_id_seq'::regclass),
-    author integer,
+    id         integer NOT NULL DEFAULT nextval('message_id_seq'::regclass),
+    author     integer,
     poluchatel integer,
-    mess text COLLATE pg_catalog."default",
-    data text COLLATE pg_catalog."default",
-    ready integer,
+    mess       text COLLATE pg_catalog."default",
+    data       text COLLATE pg_catalog."default",
+    ready      integer,
     CONSTRAINT message_pkey PRIMARY KEY (id)
 )
     WITH (
@@ -83,12 +83,12 @@ ALTER TABLE IF EXISTS public.message
 
 CREATE TABLE IF NOT EXISTS public.dialog
 (
-    id integer NOT NULL DEFAULT nextval('dialog_id_seq'::regclass),
-    author integer,
+    id         integer NOT NULL DEFAULT nextval('dialog_id_seq'::regclass),
+    author     integer,
     poluchatel integer,
-    ready integer,
-    mess text COLLATE pg_catalog."default",
-    data text COLLATE pg_catalog."default",
+    ready      integer,
+    mess       text COLLATE pg_catalog."default",
+    data       text COLLATE pg_catalog."default",
     CONSTRAINT dialog_pkey PRIMARY KEY (id)
 )
     WITH (
@@ -104,10 +104,10 @@ ALTER TABLE IF EXISTS public.dialog
 
 CREATE TABLE IF NOT EXISTS public.friends
 (
-    id integer NOT NULL DEFAULT nextval('friends_id_seq'::regclass),
-    id_user integer,
+    id        integer NOT NULL DEFAULT nextval('friends_id_seq'::regclass),
+    id_user   integer,
     id_user_2 integer NOT NULL,
-    status text COLLATE pg_catalog."default",
+    status    text COLLATE pg_catalog."default",
     CONSTRAINT friends_pkey PRIMARY KEY (id_user_2)
 )
     WITH (
@@ -120,6 +120,10 @@ ALTER TABLE IF EXISTS public.friends
 
 -- ///////////////////////////////////////  Записи  ///////////////////////////////////////
 
+
+-- Table: public.zapisi
+
+-- DROP TABLE IF EXISTS public.zapisi;
 
 CREATE TABLE IF NOT EXISTS public.zapisi
 (
@@ -138,11 +142,32 @@ CREATE TABLE IF NOT EXISTS public.zapisi
 ALTER TABLE IF EXISTS public.zapisi
     OWNER to postgres;
 
+-- ///////////////////////////////////////  Что нового  ///////////////////////////////////////
 
+-- Table: public.novogo
 
-INSERT INTO users(email, password, data, name, lastname, country, city, ip, activation, avatar ) VALUES
-    (
-        'evendot@yandex.ru',
+-- DROP TABLE IF EXISTS public.novogo;
+
+CREATE TABLE IF NOT EXISTS public.novogo
+(
+    id integer NOT NULL DEFAULT nextval('novogo_id_seq'::regclass),
+    id_user integer NOT NULL,
+    text text COLLATE pg_catalog."default",
+    data text COLLATE pg_catalog."default",
+    poluchatel integer,
+    status integer,
+    CONSTRAINT novogo_pkey PRIMARY KEY (id_user)
+)
+    WITH (
+        OIDS = FALSE
+    )
+    TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.novogo
+    OWNER to postgres;
+
+INSERT INTO users(email, password, data, name, lastname, country, city, ip, activation, avatar)
+VALUES ('evendot@yandex.ru',
         '5416d7cd6ef195a0f7622a9c56b55e84',
         '2002-10-20',
         'Станислав',
@@ -151,5 +176,4 @@ INSERT INTO users(email, password, data, name, lastname, country, city, ip, acti
         'Москва',
         '192.168.0.13',
         1,
-        '1.png'
-    );
+        '1.png');

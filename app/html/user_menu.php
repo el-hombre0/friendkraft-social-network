@@ -4,9 +4,13 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
 } else {
     $id = $_GET['id'];
     $informer = pg_query($db_connect, "SELECT count(id) FROM message WHERE poluchatel='{$_SESSION['id']}' AND ready='0'");
-    $row = pg_fetch_array($informer, PGSQL_NUM);
+//    $row = pg_fetch_array($informer, PGSQL_NUM);
+    $row = pg_fetch_array($informer);
+
     $informer_2 = pg_query($db_connect, "SELECT count(id) FROM friends WHERE id_user_2='{$_SESSION['id']}' AND status='1'");
-    $row_2 = pg_fetch_array($informer_2, PGSQL_NUM);
+//    $row_2 = pg_fetch_array($informer_2, PGSQL_NUM);
+    $row_2 = pg_fetch_array($informer_2);
+
     echo "
         <div class=menu_user>
             <a href=index?id=" . $_SESSION['id'] . ">Моя страница</a><br>
