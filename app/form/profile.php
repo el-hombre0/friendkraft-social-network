@@ -1,37 +1,29 @@
 <?
 $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
-if(!$_SESSION['email'] AND !$_SESSION['password']){
-    
-}else{
-  $q=pg_query($db_connect, "SELECT * FROM users WHERE id='{$_SESSION['id']}'");
-      $r=pg_fetch_array($q);
-      $country=$r['country'];
-      $q_2=pg_query($db_connect, "SELECT * FROM profile WHERE id_user='{$_SESSION['id']}'");
-      $r_2=pg_fetch_array($q_2);
-     
-
+if (!$_SESSION['email'] and !$_SESSION['password']) {
+} else {
+    $q = pg_query($db_connect, "SELECT * FROM users WHERE id='{$_SESSION['id']}'");
+    $r = pg_fetch_array($q);
+    $country = $r['country'];
+    $q_2 = pg_query($db_connect, "SELECT * FROM profile WHERE id_user='{$_SESSION['id']}'");
+    $r_2 = pg_fetch_array($q_2);
 }
-
-$p=$_GET['p'];
-switch($p){
-  default:
-      case"osnovnoe";
-     
-      
-      
-      echo"<div id=profile><div class=profile>
-       <p>Основное:</p><hr><br><center><b><font size=4 color=green>
-       ".$_SESSION['profile']."</font></b></center>";
-       unset($_SESSION['profile']);
-      echo"<br><form action=/action_edit  method=post>
+$p = $_GET['p'];
+switch ($p) {
+    default:
+    case"osnovnoe";
+        echo "<div id=profile><div class=profile><p>Основное:</p><hr><br><b>" . $_SESSION['profile'] . "</b>";
+        unset($_SESSION['profile']);
+        echo "
+<br><form action=/action_edit  method=post>
      <b>Имя:</b>
-     <input type=text name=name id=name value=".$r['name']." disabled><br><br>
+     <input type=text name=name id=name value=" . $r['name'] . " disabled><br><br>
       <b>Фамилия:</b>
-     <input type=text name=lastname id=lastname value=".$r['lastname']." disabled><br><br>
+     <input type=text name=lastname id=lastname value=" . $r['lastname'] . " disabled><br><br>
           
         <b>Страна:</b>
         <select id=country name=country>
-         <option>".$r['country']."</option>
+         <option>" . $r['country'] . "</option>
         <option value=Россия>Россия</option>
              <option value=Сша>Сша</option>
                   <option value=Китай>Китай</option>
@@ -39,10 +31,10 @@ switch($p){
                        
         </select><br><br>
          <b>город:</b>
-     <input type=text name=city id=city value=".$r['city']." ><br><br>
+     <input type=text name=city id=city value=" . $r['city'] . " ><br><br>
         <b>Семейное положение:</b>
         <select id=polojenie name=polojenie>
-         <option>".$r_2['polojenie']."</option>
+         <option>" . $r_2['polojenie'] . "</option>
         <option>Не женат</option>
          <option>Встречаюсь</option>
           <option>Помолвлен</option>
@@ -54,13 +46,13 @@ switch($p){
         </select><br><br>
          <b>Пол:</b>
          <select id=sex name=sex>
-         <option>".$r_2['sex']."</option>
+         <option>" . $r_2['sex'] . "</option>
             <option>Мужской</option>
             <option>Женский</option>
          </select><br><br>
           <b>Дата рождения:</b>
           <select name=day id=day>
-          <option>".$r_2['day']."</option>
+          <option>" . $r_2['day'] . "</option>
           <option>1</option>
            <option>2</option>
             <option>3</option>
@@ -94,7 +86,7 @@ switch($p){
             <option>31</option>
             </select>
             <select id=monday name=monday>
-              <option>".$r_2['monday']."</option>
+              <option>" . $r_2['monday'] . "</option>
             <option>Января</option>
             <option>Февраля</option>
             <option>Марта</option>
@@ -109,7 +101,7 @@ switch($p){
             <option>Декабря</option>
             </select>
             <select id=year name=year>
-              <option>".$r_2['year']."</option>
+              <option>" . $r_2['year'] . "</option>
             <option>2004</option>
             <option>2003</option>
             <option>2002</option>
@@ -169,64 +161,64 @@ switch($p){
             <input type=submit id=submit name=enter value=Сохранить><br><br><br>
       </form>
       </div></div>";
-     break;
-         
-      case"interes":
-          
-      $interes=$_GET['interes'];
-      
-           echo"<div id=profile><div class=profile>
+        break;
+
+    case"interes":
+
+        $interes = $_GET['interes'];
+
+        echo "<div id=profile><div class=profile>
        <p>Интересы:</p><hr><br><center><b><font size=4 color=green>
-       ".$_SESSION['profile']."</font></b></center>";
-       unset($_SESSION['profile']);
-      echo"<br><form action=/action_edit method=post>
+       " . $_SESSION['profile'] . "</font></b></center>";
+        unset($_SESSION['profile']);
+        echo "<br><form action=/action_edit method=post>
      <span>Любимый фильм</span><br><br>
-     <textarea name=film id=film>".$r_2['film']."</textarea><br><br>
+     <textarea name=film id=film>" . $r_2['film'] . "</textarea><br><br>
      <br><span>Любимая музыка</span><br><br>
-     <textarea name=music id=music>".$r_2['music']."</textarea><br><br><br>
+     <textarea name=music id=music>" . $r_2['music'] . "</textarea><br><br><br>
      <span>Любимое телешоу</span><br><br>
-     <textarea name=tele id=tele>".$r_2['tele']."</textarea><br><br><br>
+     <textarea name=tele id=tele>" . $r_2['tele'] . "</textarea><br><br><br>
      <span>Любимые книги</span><br><br>
-     <textarea name=book id=book>".$r_2['book']."</textarea><br><br><br>
+     <textarea name=book id=book>" . $r_2['book'] . "</textarea><br><br><br>
      <span>Любимые игры</span><br><br>
-     <textarea name=game id=game>".$r_2['game']."</textarea><br><br><br>
+     <textarea name=game id=game>" . $r_2['game'] . "</textarea><br><br><br>
      <span>Хобби</span><br><br>
-     <textarea name=hobbi id=hobbi>".$r_2['hobbi']."</textarea><br><br><br>
+     <textarea name=hobbi id=hobbi>" . $r_2['hobbi'] . "</textarea><br><br><br>
      <span>О себе</span><br><br>
      
-     <textarea name=osebe id=osebe>".$r_2['osebe']."</textarea><br><br><br><br><br><br><hr>
+     <textarea name=osebe id=osebe>" . $r_2['osebe'] . "</textarea><br><br><br><br><br><br><hr>
       <input type=submit id=submit_2 name=enter_2 value=Сохранить><br><br><br>
       </form></div></div>";
-          break;
-       
-          case"kontakt":
-     $kontakt=$_GET['kontakt'];
-       echo"<div id=profile><div class=profile>
+        break;
+
+    case"kontakt":
+        $kontakt = $_GET['kontakt'];
+        echo "<div id=profile><div class=profile>
        <p>Контакты:</p><hr><br><center><b><font size=4 color=green>
-       ".$_SESSION['profile']."</font></b></center>";
-       unset($_SESSION['profile']);
-     echo"<br> <form action=/action_edit method=post>
+       " . $_SESSION['profile'] . "</font></b></center>";
+        unset($_SESSION['profile']);
+        echo "<br> <form action=/action_edit method=post>
       <b>E-mail</b>
-      <input type=text name=email id=email value=".$r['email']." disabled><br><br>
+      <input type=text name=email id=email value=" . $r['email'] . " disabled><br><br>
       <b>Мобильный телефон</b>
-      <input type=text name=phone id=phone  value=".$r_2['phone']."><br><br>
+      <input type=text name=phone id=phone  value=" . $r_2['phone'] . "><br><br>
         <b>Доп. телефон</b>
-      <input type=text name=phone_2 id=phone_2  value=".$r_2['phone_2']."><br><br>
+      <input type=text name=phone_2 id=phone_2  value=" . $r_2['phone_2'] . "><br><br>
        
       <b>Скайп</b>
-      <input type=text name=skape id=skape  value=".$r_2['skape']."><br><br>
+      <input type=text name=skape id=skape  value=" . $r_2['skape'] . "><br><br>
       <b>Личный сайт</b>
-      <input type=text name=sate id=sate  value=".$r_2['sate']."><br><br><hr>
+      <input type=text name=sate id=sate  value=" . $r_2['sate'] . "><br><br><hr>
        <input type=submit id=submit_3 name=enter_3 value=Сохранить><br><br><br>
       </form></div></div>";
-      break;
-       case"password":
-     $password=$_GET['password'];
-       echo"<div id=profile><div class=profile>
+        break;
+    case"password":
+        $password = $_GET['password'];
+        echo "<div id=profile><div class=profile>
        <p>Редактирование пароля:</p><hr><br>
        <div id=pass></div>";
-       
-     echo"<br> <form action=/action_newpassword method=post>
+
+        echo "<br> <form action=/action_newpassword method=post>
     <b>Введите старый пароль</b>
       <input type=password  class=password name=password><br><br>
       <b>Придумайте новый пароль</b>
@@ -237,7 +229,7 @@ switch($p){
       
        <input type=submit id=submit_4 value=Сохранить пароль><br><br><br>
       </form></div></div>";
-       break;
+        break;
 }
 
 ?>
