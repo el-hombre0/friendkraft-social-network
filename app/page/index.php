@@ -61,9 +61,9 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
         echo "
         <div id=left_container>
             <div id=photo>
-                <img src=" . $r_2['avatar'] . " width=200 height=260>
+                <img src=" . $r_2['avatar'] . " width=200 height=260 alt=\"Аватар\">
                 <button id=button>Загрузить фото</button>
-        </div>
+            </div>
         ";
         echo "<div id=friends>";
 
@@ -96,7 +96,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 echo "
                 <div id=friends_drug>
                     <div class=drug_drug>
-                    <img src=" . $ru_3['avatar'] . ">
+                    <img src=" . $ru_3['avatar'] . " alt=\"Аватар\">
                     &nbsp;
                     <small><a href=/index?id=" . $ru_3['id'] . ">" . $ru_3['name'] . "</a></small>
                     <br>
@@ -124,7 +124,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 echo "
                 <div id=friends_drug>
                     <div class=drug_drug>
-                        <img src=" . $ru_7['avatar'] . ">
+                        <img src=" . $ru_7['avatar'] . " alt=\"Аватар\">
                         &nbsp;
                         <small><a href=/index?id=" . $ru_7['id'] . ">" . $ru_7['name'] . "</a></small>
                         <br>
@@ -225,7 +225,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 <div id=zapisi>
                     <div id=lyoudi>
                         <p>
-                        <img src=" . $novogo_2['avatar'] . " >&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src=" . $novogo_2['avatar'] . " alt=\"Аватар\">&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href=/index?id=" . $novogo['id_user'] . ">" . $novogo_2['name'] . "&nbsp;&nbsp;" .
                     $novogo_2['lastname'] . "</a>
                         <a class=del_novogo href=/del_novogo?id=" . $novogo['id'] . ">X</a>
@@ -276,7 +276,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
         echo "
         <div id=left_container>
             <div id=photo>
-                <img src=" . $r_profile_user['avatar'] . ">
+                <img src=" . $r_profile_user['avatar'] . " alt=\"Аватар\">
                 <button id=button>Написать сообщение</button>
                 <br>
         ";
@@ -311,7 +311,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 echo "
                 <div id=friends_drug>
                     <div class=drug_drug>
-                        <img src=" . $ru_5['avatar'] . ">&nbsp;
+                        <img src=" . $ru_5['avatar'] . " alt=\"Аватар\">&nbsp;
                         <small>
                             <a href=/index?id=" . $ru_5['id'] . ">" . $ru_5['name'] . "</a>
                         </small>
@@ -343,7 +343,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 echo "
                 <div id=friends_drug>
                     <div class=drug_drug>
-                        <img src=" . $ru_9['avatar'] . ">&nbsp;
+                        <img src=" . $ru_9['avatar'] . " alt=\"Аватар\">&nbsp;
                         <small>
                             <a href=/index?id=" . $ru_9['id'] . ">" . $ru_9['name'] . "</a>
                         </small>
@@ -451,7 +451,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 <div id=zapisi>
                     <div id=lyoudi>
                         <p>
-                            <img src=" . $novogo_4['avatar'] . " >&nbsp;&nbsp;&nbsp;&nbsp;
+                            <img src=" . $novogo_4['avatar'] . " alt=\"Аватар\">&nbsp;&nbsp;&nbsp;&nbsp;
                             <a href=/index?id=" . $novogo_3['id_user'] . ">" . $novogo_4['name'] . "&nbsp;&nbsp;" . $novogo_4['lastname'] . "</a>
                             <br>
                             <b>&nbsp;&nbsp;&nbsp;&nbsp;" . $novogo_3['data'] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $lm . "</b>

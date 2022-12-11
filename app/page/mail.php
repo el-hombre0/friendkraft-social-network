@@ -21,7 +21,11 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     $act = $_GET['act'];
     switch ($act) {
         default:
-            echo "<h3>Диалоги</h3><br><br><br><br><hr>";
+            echo "
+            <h3>Диалоги</h3>
+            <br><br><br><br>
+            <hr>
+            ";
             $q_2 = pg_query($db_connect, "SELECT * FROM message WHERE poluchatel='{$r['id']}' ORDER BY id DESC");
             while ($r_2 = pg_fetch_array($q_2)) {
                 $id = $r_2['id'];
@@ -43,13 +47,15 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                         <div id=act>
                             <a class=del href=/del_message?id=" . $r_2['id'] . ">&times;</a>
                             <p>
-                            <img src=" . $r_3['avatar'] . " >
-                            <b>
-                            <a href=/index?id=" . $r_3['id'] . ">" . $r_3['name'] . "&nbsp;&nbsp;" . $r_3['lastname'] . "</a>
-                            </b><br><br>&nbsp;&nbsp;
-                            <a href=mail?act=inbox&id=" . $r_3['id'] . ">" . substr($r_2['mess'], 0, 50) .
-                            "</a><br>
-                            <small>" . $r_2['data'] . "</small><br>
+                                <img src=" . $r_3['avatar'] . " alt=\"Аватар\">
+                                <b><a href=/index?id=" . $r_3['id'] . ">" . $r_3['name'] . "&nbsp;&nbsp;" .
+                            $r_3['lastname'] . "</a></b>
+                                <br><br>&nbsp;&nbsp;
+                                <a href=mail?act=inbox&id=" . $r_3['id'] . ">" .
+                            substr($r_2['mess'], 0, 50) . "</a>
+                                <br>
+                                <small>" . $r_2['data'] . "</small>
+                                <br>
                             </p>
                             <hr>
                         </div>
@@ -59,7 +65,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                         <div id=act>
                             <a class=del href=/del_message?id=" . $r_2['id'] . ">&times;</a>
                             <p>
-                                <img src=" . $r_3['avatar'] . " >
+                                <img src=" . $r_3['avatar'] . " alt=\"Аватар\">
                                 <b><a href=/index?id=" . $r_3['id'] . ">" . $r_3['name'] . "&nbsp;&nbsp;" .
                             $r_3['lastname'] . "</a></b>
                                 <br><br>
@@ -110,7 +116,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                         <div id=act>
                             <a class=del href=/del_message?id=" . $r_2['id'] . ">&times;</a>
                             <p>
-                                <img src=" . $r_3['avatar'] . " >
+                                <img src=" . $r_3['avatar'] . " alt=\"Аватар\">
                                 <b><a href=/index?id=" . $r_3['id'] . ">" . $r_3['name'] . "&nbsp;&nbsp;" .
                             $r_3['lastname'] . "</a></b>
                                 <br><br>
@@ -129,7 +135,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                         <div id=act>
                             <a class=del href=/del_message?id=" . $r_2['id'] . ">&times;</a>
                             <p>
-                                <img src=" . $r_3['avatar'] . " >
+                                <img src=" . $r_3['avatar'] . " alt=\"Аватар\">
                                 <b><a href=/index?id=" . $r_3['id'] . ">" . $r_3['name'] . "&nbsp;&nbsp;" .
                             $r_3['lastname'] . "</a></b>
                                 <br><br>
@@ -150,7 +156,11 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
 
         case"isxod":
             $isxod = $_GET['isxod'];
-            echo "<h3>Исходящие сообщение</h3><br><br><br><br><hr>";
+            echo "
+            <h3>Отправленные сообщение</h3>
+            <br><br><br><br>
+            <hr>
+            ";
             $q_4 = pg_query($db_connect, "SELECT * FROM message WHERE author='{$r['id']}' ORDER BY id DESC");
             while ($r_4 = pg_fetch_array($q_4)) {
                 $id = $r_4['id'];
@@ -175,7 +185,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                         <div id=act>
                             <a class=del href=/del_message?id=" . $r_4['id'] . ">&times;</a>
                             <p>
-                                <img src=" . $r_5['avatar'] . " >
+                                <img src=" . $r_5['avatar'] . " alt=\"Аватар\">
                                 <b><a href=/index?id=" . $r_5['id'] . ">" . $r_5['name'] . "&nbsp;&nbsp;" .
                             $r_5['lastname'] . "</a></b>
                                 <br><br>
@@ -194,7 +204,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                         <div id=act>
                             <a class=del href=/del_message?id=" . $r_4['id'] . ">&times;</a>
                             <p>
-                                <img src=" . $r_5['avatar'] . " >
+                                <img src=" . $r_5['avatar'] . " alt=\"Аватар\">
                                 <b>
                                 <a href=/index?id=" . $r_5['id'] . ">" . $r_5['name'] . "&nbsp;&nbsp;" .
                             $r_5['lastname'] . "</a></b>
@@ -239,7 +249,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                     <div id=act>
                         <a class=del href=/del_message?id=" . $r_6['id'] . ">&times;</a>
                         <p>
-                            <img src=" . $r_7['avatar'] . " >
+                            <img src=" . $r_7['avatar'] . " alt=\"Аватар\">
                             <b>
                             <a href=/index?id=" . $r_7['id'] . ">" . $r_7['name'] . "&nbsp;&nbsp;" . $r_7['lastname'] .
                         "</a></b>
@@ -285,7 +295,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                     <div id=act>
                         <a class=del href=/del_message?id=" . $r_8['id'] . ">&times;</a>
                         <p>
-                            <img src=" . $r_9['avatar'] . " >
+                            <img src=" . $r_9['avatar'] . " alt=\"Аватар\">
                             <b><a href=/index?id=" . $r_9['id'] . ">" . $r_9['name'] . "&nbsp;&nbsp;" .
                         $r_9['lastname'] . "</a></b>
                             <br><br>
@@ -339,9 +349,9 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                     echo "
                     <div id=act_2>
                         <p>
-                            <img src=" . $res_2['avatar'] . " >
+                            <img src=" . $res_2['avatar'] . " alt=\"Аватар\">
                             <b><a href=/index?id=" . $res_2['id'] . ">" . $res_2['name'] . "&nbsp;&nbsp;" .
-                            $res_2['lastname'] . "</a>
+                        $res_2['lastname'] . "</a>
                             <small>" . $ru['data'] . "</small>
                             </b>
                             <br><br>
@@ -360,7 +370,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 <div id=inform_3></div>
                 <form action=/action_messages_2 method=post>
                     <input type=hidden id=poluchatel name=poluchatel value=" . $su['author'] . ">
-                    <textarea id=textarea name=textarea placeholder='Введите текст сообщения'></textarea>
+                    <textarea id=textarea name=textarea placeholder='Введите сообщение'></textarea>
                     <br>
                     
                     <input type=submit id=submit_5 value=Отправить>

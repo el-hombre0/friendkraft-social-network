@@ -12,12 +12,12 @@ echo "
             <script type=text/javascript src=/script/photo.js></script>
             <script type=text/javascript src=/script/ajaxupload.js></script>
             
-            <link rel=stylesheet type=text/css href=/css/style.css>
-            <link rel=stylesheet type=text/css href=/css/novosti.css>
-            <link rel=stylesheet type=text/css href=/css/user.css>
-            <link rel=stylesheet type=text/css href=/css/profile.css>
-            <link rel=stylesheet type=text/css href=/css/messages.css>
-            <link rel=stylesheet type=text/css href=/css/friends.css>
+            <link rel=stylesheet href=/css/style.css>
+            <link rel=stylesheet href=/css/novosti.css>
+            <link rel=stylesheet href=/css/user.css>
+            <link rel=stylesheet href=/css/profile.css>
+            <link rel=stylesheet href=/css/messages.css>
+            <link rel=stylesheet href=/css/friends.css>
         </head>
         <body>
 ";

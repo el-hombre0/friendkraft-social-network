@@ -1,5 +1,5 @@
 <div class="password">
-    <p>Востановление забытого пароля</p>
+    <p>Востановление пароля</p>
     <div id="pass"></div>
 
     <form action="/action_password" method="post">

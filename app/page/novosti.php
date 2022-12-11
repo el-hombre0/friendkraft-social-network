@@ -26,8 +26,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     <div id=novosti>
         новости
     </div>
-    <div id=rightcol>
-    </div>
+    <div id=rightcol></div>
     ";
 }
 

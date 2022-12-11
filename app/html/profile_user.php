@@ -7,7 +7,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
         <br>
         <a href=profile?p=interes>Интересы</a><br>
         <a href=profile?p=kontakt>Контакты</a><br>
-        <a href=profile?p=password>Редактирование пароля</a>
+        <a href=profile?p=password>Изменить пароль</a>
         <br>
     </div>
     ";

@@ -4,8 +4,7 @@ top("Востановление пароля");
 
 <div id="header"></div>
 
-<div id="leftcol">
-</div>
+<div id="leftcol"></div>
 
 <div id="novosti">
     <?php
@@ -13,9 +12,7 @@ top("Востановление пароля");
     ?>
 </div>
 
-<div id="rightcol">
-</div>
-
+<div id="rightcol"></div>
 
 <?php
 bottom();

@@ -1,5 +1,5 @@
 <div id="photo_top">
-    <span>Загрузка новой фотографии</span>
+    <span>Загрузка фотографии</span>
     <a href="" class="times">&times</a>
 </div>
 

@@ -12,6 +12,6 @@ echo "
 <form action=/action_novogo method=post>
     <input type=hidden name=poluchatel id=poluchatel value=" . $r['id'] . ">
     <input type=text name=input_2 class=input_2 placeholder='Разместить запись'>
-    <input type=submit name=name class=enter_2 value=опубликовать>
+    <input type=submit name=name class=enter_2 value=Опубликовать>
 </form>
 ";

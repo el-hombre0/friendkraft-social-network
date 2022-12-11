@@ -48,7 +48,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                     <div id=zayavka>
                         <div id=act>
                         <p>
-                            <img src=" . $r_1['avatar'] . " >
+                            <img src=" . $r_1['avatar'] . "  alt=\"Аватар\">
                             <b><a href=/index?id=" . $r_1['id'] . ">" . $r_1['name'] . "&nbsp;&nbsp;" .
                             $r_1['lastname'] . "</a>
                             <br>
@@ -90,7 +90,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                     echo "
                     <div id=act>
                         <p>
-                            <img src=" . $r_3['avatar'] . " >
+                            <img src=" . $r_3['avatar'] . " alt=\"Аватар\">
                             <b><a href=/index?id=" . $r_3['id'] . ">" . $r_3['name'] . "&nbsp;&nbsp;" .
                             $r_3['lastname'] . "</a>
                             <br>
@@ -126,7 +126,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                     echo "
                     <div id=act>
                         <p>
-                            <img src=" . $ru_3['avatar'] . " >
+                            <img src=" . $ru_3['avatar'] . " alt=\"Аватар\">
                             <b><a href=/index?id=" . $ru_3['id'] . ">" . $ru_3['name'] . "&nbsp;&nbsp;" .
                             $ru_3['lastname'] . "</a>
                             <br>
@@ -190,7 +190,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                     echo "
                     <div id=act>
                         <p>
-                            <img src=" . $r_6['avatar'] . " >
+                            <img src=" . $r_6['avatar'] . " alt=\"Аватар\">
                             <b><a href=/index?id=" . $r_6['id'] . ">" . $r_6['name'] . "&nbsp;&nbsp;" .
                             $r_6['lastname'] . "</a>
                             <br>

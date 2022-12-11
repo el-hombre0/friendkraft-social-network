@@ -30,25 +30,30 @@ CREATE TABLE IF NOT EXISTS users
 
 -- ///////////////////////////////////////  Профиль  ///////////////////////////////////////
 
+-- Table: public.profile
+
+-- DROP TABLE IF EXISTS public.profile;
+
 CREATE TABLE IF NOT EXISTS public.profile
 (
-    id        serial  NOT NULL,
-    id_user   integer NOT NULL,
+    id integer NOT NULL DEFAULT nextval('profile_id_seq'::regclass),
+    id_user integer NOT NULL,
     polojenie text COLLATE pg_catalog."default",
-    sex       text COLLATE pg_catalog."default",
-    day       integer,
-    monday    text COLLATE pg_catalog."default",
-    year      integer,
-    film      text COLLATE pg_catalog."default",
-    music     text COLLATE pg_catalog."default",
-    tele      text COLLATE pg_catalog."default",
-    book      text COLLATE pg_catalog."default",
-    game      text COLLATE pg_catalog."default",
-    osebe     text COLLATE pg_catalog."default",
-    phone     text COLLATE pg_catalog."default",
-    phone_2   text COLLATE pg_catalog."default",
-    skype     text COLLATE pg_catalog."default",
-    sait      text COLLATE pg_catalog."default",
+    sex text COLLATE pg_catalog."default",
+    day integer,
+    monday text COLLATE pg_catalog."default",
+    film text COLLATE pg_catalog."default",
+    music text COLLATE pg_catalog."default",
+    tele text COLLATE pg_catalog."default",
+    book text COLLATE pg_catalog."default",
+    game text COLLATE pg_catalog."default",
+    osebe text COLLATE pg_catalog."default",
+    skype text COLLATE pg_catalog."default",
+    sait text COLLATE pg_catalog."default",
+    phone text COLLATE pg_catalog."default",
+    phone_2 text COLLATE pg_catalog."default",
+    year text COLLATE pg_catalog."default",
+    hobbi text COLLATE pg_catalog."default",
     CONSTRAINT profile_pkey PRIMARY KEY (id_user)
 )
     WITH (

@@ -1,15 +1,15 @@
 <div id="popur">
-    <div class="popur_top"><span>Моментальная регистрация</span>
+    <div class="popur_top"><span>Регистрация</span>
         <a href="">&times;</a>
     </div>
     <div id="register">
         <p>
-            Пожайлуста укажите ваш E-mail и пароль. На указанный E-mail будет отправлена ссылка для активации аккаунта.
+            Укажите ваш E-mail и пароль. На указанный E-mail будет отправлена ссылка для активации аккаунта.
         </p>
         <br>
         <div id="inform"></div>
         <form action="/action_register" method="post">
-            <b>Введите ваш E-mail</b>
+            <b>Ваш E-mail</b>
             <input type="text" name="email" id="email">
             <br><br>
 

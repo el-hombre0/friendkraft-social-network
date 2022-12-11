@@ -11,7 +11,6 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     $q = pg_query($db_connect, "SELECT * FROM users  WHERE id='{$_SESSION['id']}'");
     $r = pg_fetch_array($q);
 
-
     echo "
     <div id=header>Friendkraft</div>
     <div id=leftcol>
@@ -36,7 +35,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
         echo "
         <div id=lyoudi>
             <p>
-                <img src=" . $r_2['avatar'] . " >
+                <img src=" . $r_2['avatar'] . "  alt=\"Аватар\">
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a href=/index?id=" . $r_2['id'] . ">" . $r_2['name'] . "&nbsp;&nbsp;" . $r_2['lastname'] . "</a>
                 <br>
