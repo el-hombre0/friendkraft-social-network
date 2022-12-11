@@ -15,7 +15,7 @@ echo "
         <div class=inform_mess></div>
         
         <form action=/action_message method=post>
-            <textarea id=mess name=mess placeholder='Введите текст сообщение'></textarea>
+            <textarea id=mess name=mess placeholder='Введите сообщение'></textarea>
             <input type=hidden name=poluchatel id=poluchatel value=" . $_GET['id'] . ">
             <input type=submit id=submit_mess value=Отправить>
         </form>

@@ -36,6 +36,4 @@ if (isset($_POST)) {
         echo "Сообщение успешно отправленно";
         echo "<meta http-equiv='refresh' content='1; url=/index?id=" . $poluchatel . "'>";
     }
-
-
 }

@@ -12,7 +12,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     $result = pg_fetch_array($query);
 
     echo "
-    <div id=header>Шапка</div>
+    <div id=header>Friendkraft</div>
         <div id=leftcol>
     ";
 

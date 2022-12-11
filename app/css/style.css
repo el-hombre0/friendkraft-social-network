@@ -1,5 +1,5 @@
 body {
-    background-color: #E6E6FA;
+    background-color: #afafaf;
 }
 
 #header {
@@ -36,7 +36,8 @@ body {
 
 #content p {
     margin-left: 20px;
-    font-size: 10px;
+    font-size: 20px;
+    text-align: justify;
 }
 
 #login #email_2 {

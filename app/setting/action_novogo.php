@@ -24,5 +24,3 @@ if (isset($_POST)) {
         echo $result['id'];
     }
 }
-
-?>

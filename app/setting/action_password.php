@@ -21,7 +21,8 @@ if (isset($_POST)) {
             $title = "Востановление пароля пользователю" . $email . "для сайта friendktaft.ru";
             $headers = "Content-type: text/plain: charset=utf-8\r\n";
             $headers .= "Администрация сайта friendktaft.ru";
-            $letter = "Вы запросили пароль для аккаунта" . $email . " на сайте friendktaft.ru\r\n ваш новый пароль " . $password;
+            $letter = "Вы запросили пароль для аккаунта" . $email .
+                " на сайте friendktaft.ru\r\n ваш новый пароль " . $password;
             if (mail($email, $title, $letter, $header)) {
                 pg_query($db_connect, "UPDATE users SET password='$newmdPassword' WHERE email='$email'");
                 echo "<b>Ваш новый пароль<br> отправлен на ваш E-mail</b>";
@@ -30,5 +31,3 @@ if (isset($_POST)) {
         }
     }
 }
-
-?>

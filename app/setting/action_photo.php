@@ -10,7 +10,6 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     $id = $r_user['id'];
 }
 if (isset($_POST['file'])) {
-
     $uploadDir = "file/";
     $types = array("image/gif", "image/png", "image/jpeg", "image/pjpeg", "image/p-png");
     $size = 1048576;
@@ -27,22 +26,14 @@ if (isset($_POST['file'])) {
     }
     if (!in_array($_FILES['userfile']['type'], $types)) {
         $res = array("answer" => "Ошибка! Допустимые расширение- .gif, .png, .jpg");
-
     }
     if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadDir . $file)) {
         $res = array("answer" => "ok", "file" => $file);
         $q = pg_query($db_connect, "UPDATE users SET avatar='file/$file' WHERE id='{$_SESSION['id']}'");
-
-
         exit(json_encode($res));
-
 
     } else {
         $res = array("answer" => "Ошибка загрузки /file/", "file" => $file);
         exit(json_encode($res));
-
-
     }
-
-
 }

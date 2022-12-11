@@ -12,7 +12,7 @@ $status = $r_2['status'];
 $id_user_2 = $r_2['id_user_2'];
 
 if ($r_2['status'] == 1) {
-    echo "<br>Заявка отправленна";
+    echo "<br>Заявка отправлена";
 } else if ($r_2['status'] == 2) {
     echo "<br>У вас в друзьях";
 } else {

@@ -15,7 +15,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     }
 
     echo "
-        <div id=header>Шапка</div>
+        <div id=header>FriendKraft</div>
         <div id=leftcol>
     ";
 
@@ -24,7 +24,6 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     echo "
     </div>
     <div id=novosti>
-        новости
     </div>
     <div id=rightcol></div>
     ";
