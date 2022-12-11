@@ -1,4 +1,4 @@
-<?
+<?php
 $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 
 if (!$_SESSION['email'] and !$_SESSION['password']) {
@@ -93,13 +93,12 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 if (!$ru_3['avatar']) {
                     $ru_3['avatar'] = "/file/1.jpg width=50 height=50";
                 }
-                echo "<div id=friends_drug>
-                <div class=drug_drug>
+                echo "
+                <div id=friends_drug>
+                    <div class=drug_drug>
                     <img src=" . $ru_3['avatar'] . ">
                     &nbsp;
-                    <small>
-                    <a href=/index?id=" . $ru_3['id'] . ">" . $ru_3['name'] . "</a>
-                    </small>
+                    <small><a href=/index?id=" . $ru_3['id'] . ">" . $ru_3['name'] . "</a></small>
                     <br>
                     </div>
                 </div>
@@ -122,24 +121,23 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 if (!$ru_7['avatar']) {
                     $ru_7['avatar'] = "/file/1.jpg";
                 }
-                echo "<div id=friends_drug>
-<div class=drug_drug>
-<img src=" . $ru_7['avatar'] . ">
-&nbsp;
-<small>
-<a href=/index?id=" . $ru_7['id'] . ">" . $ru_7['name'] . "</a>
-</small>
-<br>
-</div>
-</div>
-";
+                echo "
+                <div id=friends_drug>
+                    <div class=drug_drug>
+                        <img src=" . $ru_7['avatar'] . ">
+                        &nbsp;
+                        <small><a href=/index?id=" . $ru_7['id'] . ">" . $ru_7['name'] . "</a></small>
+                        <br>
+                    </div>
+                </div>
+                ";
             }
         }
 
         echo "
-</div>
-</div>
-";
+            </div>
+        </div>
+        ";
         if ($r_2['city'] != '')
             $a = "<br>Город:";
         if ($res['day'] != '' or $res['monday'] != '' or $res['year'] != '')
@@ -156,7 +154,6 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             $g = "<br>Любимое телешоу:";
         if ($res['book'] != '')
             $h = "<br>Любимые книги:";
-
         if ($res['game'] != '')
             $k = "<br>Любимые игры:";
         if ($res['hobbi'] != '')
@@ -173,82 +170,49 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             $q = "<br>О себе:";
 
         echo "
-<div id=user_container>
-<div id=inform>
-<h3>" . $r_2['name'] . "&nbsp;&nbsp;" . $r_2['lastname'] . "</h3>
-<hr>
-<b>Страна:</b>
-&nbsp;&nbsp;
-" . $r_2['country'] . "
-<b>" . $a . "</b>
-&nbsp;&nbsp;
-" . $r_2['city'] .
-            "<b>" . $b . "</b>
-&nbsp;&nbsp;
-" . $res['day'] .
-            "&nbsp;&nbsp;" .
-            $res['monday'] .
-            "&nbsp;&nbsp;" .
-            $res['year'] .
-            "<b>" . $c . "</b>
-&nbsp;&nbsp;" .
-            $res['polojenie'] .
-            "<b>" . $d . "</b>
-&nbsp;&nbsp;
-" . $res['sex'] . "
-<h4 class=spoller_title>Показать еще информацию</h4>
-<div class=spoller-body>
-<b>" . $e . "</b>
-&nbsp;&nbsp;
-" . $res['film'] .
-            "<b>" . $f . "</b>
-&nbsp;&nbsp;" .
-            $res['music'] .
-            "<b>" . $g . "</b>
-&nbsp;&nbsp;" .
-            $res['tele'] . "
-<b>" . $h . "</b>
-&nbsp;&nbsp;
-" . $res['book'] .
-            "<b>" . $k . "</b>
-&nbsp;&nbsp;
-" . $res['game'] .
-            "<b>" . $l . "</b>
-&nbsp;&nbsp;
-" . $res['hobbi'] .
-            "<b>" . $m . "</b>
-&nbsp;&nbsp;
-" . $res['phone'] .
-            "<b>" . $n . "</b>
-&nbsp;&nbsp;
-" . $res['phone_2'] .
-            "<b>" . $o . "</b>
-&nbsp;&nbsp;
-" . $res['skape'] . "<b>" . $p . "</b>
-&nbsp;&nbsp;
-" . $res['sate'] .
-            "<b>" . $q . "</b>
-&nbsp;&nbsp;
-" . $res['osebe'] . "
-</div>
-<hr>
-</div>
-";
+        <div id=user_container>
+            <div id=inform>
+                <h3>" . $r_2['name'] . "&nbsp;&nbsp;" . $r_2['lastname'] . "</h3>
+                <hr>
+                <b>Страна:</b>&nbsp;&nbsp;" . $r_2['country'] . "
+                <b>" . $a . "</b>&nbsp;&nbsp;" . $r_2['city'] . "
+                <b>" . $b . "</b>&nbsp;&nbsp;" . $res['day'] . "&nbsp;&nbsp;" . $res['monday'] . "&nbsp;&nbsp;" .
+            $res['year'] . "
+                <b>" . $c . "</b>&nbsp;&nbsp;" . $res['polojenie'] . "
+                <b>" . $d . "</b>&nbsp;&nbsp;" . $res['sex'] . "
+                <h4 class=spoller_title>Показать еще информацию</h4>
+                <div class=spoller-body>
+                    <b>" . $e . "</b>&nbsp;&nbsp;" . $res['film'] . "
+                    <b>" . $f . "</b>&nbsp;&nbsp;" . $res['music'] . "
+                    <b>" . $g . "</b>&nbsp;&nbsp;" . $res['tele'] . "
+                    <b>" . $h . "</b>&nbsp;&nbsp;" . $res['book'] . "
+                    <b>" . $k . "</b>&nbsp;&nbsp;" . $res['game'] . "
+                    <b>" . $l . "</b>&nbsp;&nbsp;" . $res['hobbi'] . "
+                    <b>" . $m . "</b>&nbsp;&nbsp;" . $res['phone'] . "
+                    <b>" . $n . "</b>&nbsp;&nbsp;" . $res['phone_2'] . "
+                    <b>" . $o . "</b> &nbsp;&nbsp;" . $res['skape'] . "
+                    <b>" . $p . "</b>&nbsp;&nbsp;" . $res['sate'] . "
+                    <b>" . $q . "</b>&nbsp;&nbsp;" . $res['osebe'] . "
+                </div>
+                <hr>
+            </div>
+        ";
         echo "
-<div class=container>
-";
+        <div class=container>
+        ";
         echo "
-<div id=gallereya></div>
-";
+        <div id=gallereya>
+        </div>
+        ";
         include("form/novogo.php");
         echo "<div id=novogo>";
         $n = pg_query($db_connect, "SELECT id, id_user, poluchatel, text, data, status FROM novogo 
-                                                   WHERE poluchatel='{$_SESSION['id']}' ORDER BY id DESC");
+        WHERE poluchatel='{$_SESSION['id']}' ORDER BY id DESC");
         while ($novogo = pg_fetch_array($n)) {
             $id_user = $novogo['id_user'];
             $poluchatel = $novogo['poluchatel'];
             $n_2 = pg_query($db_connect, "SELECT id, name, lastname, avatar FROM users 
-                                  WHERE id='{$novogo['id_user']}'");
+            WHERE id='{$novogo['id_user']}'");
             while ($novogo_2 = pg_fetch_array($n_2)) {
                 if (!$novogo_2['avatar']) {
                     $novogo_2['avatar'] = "/file/1.jpg width=60 height=60";
@@ -257,23 +221,20 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 if ($novogo['status'] == 1) {
                     $lm = "Разместил у вас запись";
                 }
-                echo "<div id=zapisi>
-                <div id=lyoudi>
-                <p>
-                <img src=" . $novogo_2['avatar'] . " >
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href=/index?id=" . $novogo['id_user'] . ">" . $novogo_2['name'] . "&nbsp;&nbsp;" . $novogo_2['lastname'] . "</a>
-                <a class=del_novogo href=/del_novogo?id=" . $novogo['id'] . ">X</a>
-                <br>
-                <b>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                " . $novogo['data'] . "
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                " . $lm . "</b>
-                <br><br><br><br>
-                <small>" . $novogo['text'] . "</small>
-                </p>
-                </div>
+                echo "
+                <div id=zapisi>
+                    <div id=lyoudi>
+                        <p>
+                        <img src=" . $novogo_2['avatar'] . " >&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href=/index?id=" . $novogo['id_user'] . ">" . $novogo_2['name'] . "&nbsp;&nbsp;" .
+                    $novogo_2['lastname'] . "</a>
+                        <a class=del_novogo href=/del_novogo?id=" . $novogo['id'] . ">X</a>
+                        <br>
+                        <b>&nbsp;&nbsp;&nbsp;&nbsp;" . $novogo['data'] . "&nbsp;&nbsp;&nbsp;&nbsp;" . $lm . "</b>
+                        <br><br><br><br>
+                        <small>" . $novogo['text'] . "</small>
+                        </p>
+                    </div>
                 </div>
                 ";
             }
@@ -281,13 +242,13 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
 
         echo "</div>";
         echo "
-</div>
-</div>
-";
+            </div>
+        </div>
+        ";
 
     } else {
         $profile_user = pg_query($db_connect, "SELECT id, name, lastname, country, city, avatar 
-FROM users WHERE id='$id'");
+        FROM users WHERE id='$id'");
         $r_profile_user = pg_fetch_array($profile_user);
         $query_2 = pg_query($db_connect, "SELECT * FROM profile WHERE id_user='{$r_profile_user['id']}'");
         $result_2 = pg_fetch_array($query_2);
@@ -296,39 +257,42 @@ FROM users WHERE id='$id'");
         include("form/messages.php");
         echo "</div>";
         echo "
-<div id=hover>
-
-</div>";
-        echo "<div id=header>
-<div class=exit>
-<a href=/exit>Выйти</a>
-</div>
-</div>
-             <div id=leftcol>";
+        <div id=hover>    
+        </div>";
+        echo "
+        <div id=header>
+            <div class=exit>
+                <a href=/exit>Выйти</a>
+            </div>
+        </div>
+        <div id=leftcol>
+        ";
         include("html/user_menu.php");
         echo "</div>";
         if (!$r_profile_user['avatar']) {
             $r_profile_user['avatar'] = "/file/1.jpg width=200 height=260";
         }
         echo "";
-        echo "<div id=left_container>
-<div id=photo>
-<img src=" . $r_profile_user['avatar'] . ">
-<button id=button>Написать сообщение</button>
-<br>";
+        echo "
+        <div id=left_container>
+            <div id=photo>
+                <img src=" . $r_profile_user['avatar'] . ">
+                <button id=button>Написать сообщение</button>
+                <br>
+        ";
         include("form/friends.php");
         echo "</div>";
         echo "<div id=friends_2>";
 
         $informer_2 = pg_query($db_connect, "SELECT count(id) FROM friends 
-                 WHERE id_user='{$r_profile_user['id']}' OR id_user_2='$id' AND status='2'");
+        WHERE id_user='{$r_profile_user['id']}' OR id_user_2='$id' AND status='2'");
 //        $row_2 = pg_fetch_array($informer_2, PGSQL_NUM);
         $row_2 = pg_fetch_array($informer_2);
 
         echo "<b>Друзья&nbsp;&nbsp;&nbsp;" . $row_2[0] . "</b><br><br>";
 
         $qu_4 = pg_query($db_connect, "SELECT * FROM friends 
-         WHERE id_user_2='{$r_profile_user['id']}' AND status='2'");
+        WHERE id_user_2='{$r_profile_user['id']}' AND status='2'");
         while ($ru_4 = pg_fetch_array($qu_4)) {
             $id = $ru_4['id'];
             $id_user = $ru_4['id_user'];
@@ -344,21 +308,22 @@ FROM users WHERE id='$id'");
                 if (!$ru_5['avatar']) {
                     $ru_5['avatar'] = "/file/1.jpg width=50 height=50";
                 }
-                echo "<div id=friends_drug>
-<div class=drug_drug><img src=" . $ru_5['avatar'] . ">
-&nbsp;
-<small>
-<a href=/index?id=" . $ru_5['id'] . ">" . $ru_5['name'] . "</a>
-</small>
-<br>
-</div>
-</div>
-";
+                echo "
+                <div id=friends_drug>
+                    <div class=drug_drug>
+                        <img src=" . $ru_5['avatar'] . ">&nbsp;
+                        <small>
+                            <a href=/index?id=" . $ru_5['id'] . ">" . $ru_5['name'] . "</a>
+                        </small>
+                        <br>
+                    </div>
+                </div>
+                ";
             }
         }
 
         $qu_8 = pg_query($db_connect, "SELECT * FROM friends 
-         WHERE id_user='{$r_profile_user['id']}' AND status='2'");
+        WHERE id_user='{$r_profile_user['id']}' AND status='2'");
         while ($ru_8 = pg_fetch_array($qu_8)) {
             $id = $ru_8['id'];
             $id_user = $ru_8['id_user'];
@@ -366,7 +331,7 @@ FROM users WHERE id='$id'");
             $status = $ru_8['status'];
 
             $qu_9 = pg_query($db_connect, "SELECT * FROM users 
-         WHERE id='$id_user_2'");
+            WHERE id='$id_user_2'");
             while ($ru_9 = pg_fetch_array($qu_9)) {
                 $id = $ru_9['id'];
                 $name = $ru_9['name'];
@@ -375,26 +340,28 @@ FROM users WHERE id='$id'");
                 if (!$ru_9['avatar']) {
                     $ru_9['avatar'] = "/file/1.jpg width=50 height=50";
                 }
-                echo "<div id=friends_drug>
-<div class=drug_drug>
-<img src=" . $ru_9['avatar'] . ">
-&nbsp;
-<small>
-<a href=/index?id=" . $ru_9['id'] . ">" . $ru_9['name'] . "</a>
-</small>
-<br></div></div>
-";
+                echo "
+                <div id=friends_drug>
+                    <div class=drug_drug>
+                        <img src=" . $ru_9['avatar'] . ">&nbsp;
+                        <small>
+                            <a href=/index?id=" . $ru_9['id'] . ">" . $ru_9['name'] . "</a>
+                        </small>
+                        <br>
+                    </div>
+                </div>
+                ";
 
             }
         }
         echo "
-</div>
-</div>
-";
+            </div>
+        </div>
+        ";
         echo "
-<div id=time>
-</div>
-";
+            <div id=time>
+        </div>
+        ";
         if ($r_profile_user['city'] != '')
             $r = "<br>Город:";
         if ($r_profile_user['day'] != '' or $r_profile_user['monday'] != '' or $r_profile_user['year'] != '')
@@ -416,8 +383,8 @@ FROM users WHERE id='$id'");
             $kl = "<br>Любимые игры:";
         if ($result_2['hobbi'] != '')
             $ln = "<br>Хобби:";
-        if($result_2['phone']!='')
-            $mo="<br>Телефон:";
+        if ($result_2['phone'] != '')
+            $mo = "<br>Телефон:";
         if ($result_2['phone_2'] != '')
             $nu = "<br>дополнительный телефон:";
         if ($result_2['skape'] != '')
@@ -428,36 +395,43 @@ FROM users WHERE id='$id'");
             $qr = "<br>О себе:";
 
         echo "
-<div id=user_container>
-<div id=inform>
-<h3>" . $r_profile_user['name'] . "&nbsp;&nbsp;" . $r_profile_user['lastname'] . "</h3>
-<hr>
-<b>Страна:</b>
-&nbsp;&nbsp;" . $r_profile_user['country'] . "
-<b>" . $r . "</b>
-&nbsp;&nbsp;
-" . $r_profile_user['city'] . "
-<b>" . $c . "</b>&nbsp;&nbsp;" . $r_profile_user['day'] . "&nbsp;&nbsp;" . $r_profile_user['monday'] . "&nbsp;&nbsp;" . $r_profile_user['year'] .
-            "<b>" . $t . "</b>&nbsp;&nbsp;" . $result_2['polojenie'] . "
-<b>" . $u . "</b>&nbsp;&nbsp;" . $result_2['sex'] . "
-<h4 class=spoller_title>
-Показать еще информацию</h4>
-<div class=spoller-body>
-<b>" . $v . "</b>&nbsp;&nbsp;" . $result_2['film'] . "<b>" . $w . "</b>&nbsp;&nbsp;" . $result_2['music'] . "<b>" . $x . "</b>&nbsp;&nbsp;" . $result_2['tele'] . "
-<b>" . $z . "</b>&nbsp;&nbsp;" . $result_2['book'] . "<b>" . $kl . "</b>&nbsp;&nbsp;" . $result_2['game'] . "<b>" . $ln . "</b>&nbsp;&nbsp;" . $result_2['hobbi'] . "
-<b>" . $mo . "</b>&nbsp;&nbsp;" . $result_2['phone'] . "<b>" . $nu . "</b>&nbsp;&nbsp;" . $result_2['phone_2'] . "<b>" . $op . "</b>&nbsp;&nbsp;" . $result_2['skape'] . "
-<b>" . $ps . "</b>&nbsp;&nbsp;" . $result_2['sate'] . "<b>" . $qr . "</b>&nbsp;&nbsp;" . $result_2['osebe'] . "</div><hr></div>
-";
+        <div id=user_container>
+            <div id=inform>
+                <h3>" . $r_profile_user['name'] . "&nbsp;&nbsp;" . $r_profile_user['lastname'] . "</h3>
+                <hr>
+                <b>Страна:</b>&nbsp;&nbsp;" . $r_profile_user['country'] . "
+                <b>" . $r . "</b>&nbsp;&nbsp;" . $r_profile_user['city'] . "
+                <b>" . $c . "</b>&nbsp;&nbsp;" . $r_profile_user['day'] . "&nbsp;&nbsp;" . $r_profile_user['monday'] .
+            "&nbsp;&nbsp;" . $r_profile_user['year'] . "
+                <b>" . $t . "</b>&nbsp;&nbsp;" . $result_2['polojenie'] . "
+                <b>" . $u . "</b>&nbsp;&nbsp;" . $result_2['sex'] . "
+                <h4 class=spoller_title>Показать еще информацию</h4>
+                <div class=spoller-body>
+                    <b>" . $v . "</b>&nbsp;&nbsp;" . $result_2['film'] . "
+                    <b>" . $w . "</b>&nbsp;&nbsp;" . $result_2['music'] . "
+                    <b>" . $x . "</b>&nbsp;&nbsp;" . $result_2['tele'] . "
+                    <b>" . $z . "</b>&nbsp;&nbsp;" . $result_2['book'] . "
+                    <b>" . $kl . "</b>&nbsp;&nbsp;" . $result_2['game'] . "
+                    <b>" . $ln . "</b>&nbsp;&nbsp;" . $result_2['hobbi'] . "
+                    <b>" . $mo . "</b>&nbsp;&nbsp;" . $result_2['phone'] . "
+                    <b>" . $nu . "</b>&nbsp;&nbsp;" . $result_2['phone_2'] . "
+                    <b>" . $op . "</b>&nbsp;&nbsp;" . $result_2['skape'] . "
+                    <b>" . $ps . "</b>&nbsp;&nbsp;" . $result_2['sate'] . "
+                    <b>" . $qr . "</b>&nbsp;&nbsp;" . $result_2['osebe'] . "
+                </div>
+                <hr>
+            </div>
+        ";
         echo "<div class=container>";
         echo "
-<div id=gallereya>
-</div>
-";
+        <div id=gallereya>
+        </div>
+        ";
         include("form/novogo_2.php");
         echo "<div id=novogo>";
 
         $n_3 = pg_query($db_connect, "SELECT id, id_user, poluchatel, text, data, status FROM novogo 
-                                                   WHERE poluchatel='{$_GET['id']}' ORDER BY id DESC");
+        WHERE poluchatel='{$_GET['id']}' ORDER BY id DESC");
         while ($novogo_3 = pg_fetch_array($n_3)) {
             $id = $novogo_3['id'];
             $poluchatel = $novogo_3['poluchatel'];
@@ -465,7 +439,7 @@ FROM users WHERE id='$id'");
             $text = $novogo_3['text'];
             $data = $novogo_3['data'];
             $n_4 = pg_query($db_connect, "SELECT id, name, lastname, avatar FROM users 
-                                  WHERE id='{$novogo_3['id_user']}'");
+            WHERE id='{$novogo_3['id_user']}'");
             while ($novogo_4 = pg_fetch_array($n_4)) {
                 if (!$novogo_4['avatar']) {
                     $novogo_4['avatar'] = "/file/1.jpg width=60 height=60";
@@ -474,28 +448,26 @@ FROM users WHERE id='$id'");
                     $lm = "Вы разместили у него запись";
                 }
                 echo "
-<div id=zapisi>
-<div id=lyoudi>
-<p>
-<img src=" . $novogo_4['avatar'] . " >
-&nbsp;&nbsp;&nbsp;&nbsp;
-<a href=/index?id=" . $novogo_3['id_user'] . ">" . $novogo_4['name'] . "&nbsp;&nbsp;" . $novogo_4['lastname'] . "</a>
-<br>
-<b>&nbsp;&nbsp;&nbsp;&nbsp;" . $novogo_3['data'] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $lm . "</b>
-<br><br><br><br>
-<small>" . $novogo_3['text'] . "</small>
-</p>
-</div>
-</div>
-";
+                <div id=zapisi>
+                    <div id=lyoudi>
+                        <p>
+                            <img src=" . $novogo_4['avatar'] . " >&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a href=/index?id=" . $novogo_3['id_user'] . ">" . $novogo_4['name'] . "&nbsp;&nbsp;" . $novogo_4['lastname'] . "</a>
+                            <br>
+                            <b>&nbsp;&nbsp;&nbsp;&nbsp;" . $novogo_3['data'] . "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" . $lm . "</b>
+                            <br><br><br><br>
+                            <small>" . $novogo_3['text'] . "</small>
+                        </p>
+                    </div>
+                </div>
+                ";
             }
         }
         echo "</div>";
         echo "
-</div>
-</div>
-";
-
+            </div>
+        </div>
+        ";
     }
 }
 bottom();
