@@ -48,6 +48,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
         ";
         include("html/user_menu.php");
         echo "</div>";
+//        echo "<b>"."r_2['avatar'] = ".$r_2['avatar']."</b>";
         if (!$r_2['avatar']) {
             $r_2['avatar'] = "/file/1.jpg width=200 height=260";
         }

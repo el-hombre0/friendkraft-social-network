@@ -1,5 +1,6 @@
 <?php
 if (!$_SESSION['email'] and !$_SESSION['password']) {
+
 } else {
     echo "
         <div class=menu_profile>
