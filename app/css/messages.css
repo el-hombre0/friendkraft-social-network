@@ -1,3 +1,6 @@
+/*Стили для личных сообщений*/
+
+/*Всплывающее окно сообщений*/
 #popur_messages {
     display: none;
     width: 600px;
@@ -10,16 +13,16 @@
     margin-left: -80px;
     margin-top: -100px;
     border-radius: 7px;
-
 }
 
+/*Заголовок*/
 .popur_top_messages {
     width: 600px;
     height: 50px;
     background: #0d1117;
-
 }
 
+/*Текст в всплывающем окне сообщений*/
 .popur_top_messages .text {
     color: #fff;
     font-size: 20px;
@@ -28,6 +31,7 @@
     margin-top: 10px;
 }
 
+/*Крестик для закрытия*/
 .popur_top_messages .times {
     color: #fff;
     font-size: 30px;
@@ -36,15 +40,17 @@
     margin-top: 10px;
 }
 
+/*Снятие подчёркивания ссылок*/
 .popur_top_messages a {
     text-decoration: none;
 }
 
+/*При наведении на крестик*/
 .popur_top_messages a:hover {
     text-decoration: underline;
-
 }
 
+/*textarea для ввода сообщения*/
 #mess {
     width: 400px;
     height: 130px;
@@ -55,6 +61,7 @@
     resize: none;
 }
 
+/*Кнопка подтверждения отправки сообщения*/
 #submit_mess {
     width: 187px;
     padding: 8px;
@@ -66,6 +73,7 @@
     margin-top: 20px;
 }
 
+/*Фото отправителя*/
 #act img {
     width: 60px;
     height: 60px;
@@ -74,6 +82,7 @@
     border-radius: 50px;
 }
 
+/*Для имени*/
 #act b {
     float: left;
     margin-left: 15px;
@@ -112,6 +121,7 @@
     font-size: 30px;
 }
 
+/*Таблица стилей диалога*/
 #act_2 img {
     width: 60px;
     height: 60px;

@@ -65,15 +65,15 @@ ALTER TABLE IF EXISTS public.profile
     OWNER to postgres;
 
 -- ///////////////////////////////////////  Сообщения  ///////////////////////////////////////
-
+-- Отдельные сообщения
 CREATE TABLE IF NOT EXISTS public.message
 (
     id         integer NOT NULL DEFAULT nextval('message_id_seq'::regclass),
-    author     integer,
-    poluchatel integer,
-    mess       text COLLATE pg_catalog."default",
+    author     integer, -- id отправителя
+    poluchatel integer, -- id получателя
+    mess       text COLLATE pg_catalog."default", -- Ntrcn cjj,otybz
     data       text COLLATE pg_catalog."default",
-    ready      integer,
+    ready      integer, -- Прочитано 1 или нет 0
     CONSTRAINT message_pkey PRIMARY KEY (id)
 )
     WITH (
@@ -85,7 +85,7 @@ ALTER TABLE IF EXISTS public.message
     OWNER to postgres;
 
 -- ///////////////////////////////////////  Диалог  ///////////////////////////////////////
-
+-- Переписка
 CREATE TABLE IF NOT EXISTS public.dialog
 (
     id         integer NOT NULL DEFAULT nextval('dialog_id_seq'::regclass),

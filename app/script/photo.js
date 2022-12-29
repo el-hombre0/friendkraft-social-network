@@ -1,3 +1,4 @@
+// Скрипт для загрузки фото
 $(document).ready(function () {
     $("#button").click(function () {
         $("#popur_photo").show("fast");

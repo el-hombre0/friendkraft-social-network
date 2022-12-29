@@ -1,6 +1,7 @@
 <?php
 $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 
+//Проверка авторизован ли пользователь
 if (!$_SESSION['email'] and !$_SESSION['password']) {
     top("Социальная сеть");
     echo "
@@ -9,6 +10,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     </div>
     <div id=leftcol>
     ";
+//    Подключение форм авторизации и регистрации
     include("form/login_form.php");
     include("form/register_form.php");
     echo "
@@ -22,22 +24,28 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     $result = pg_fetch_array($q);
 
     $id = $_GET['id'];
-    top($result['name'] . "&nbsp;&nbsp;" . $result['lastname']);
+//    Имя в название вкладки
+    top($result['name'] . " " . $result['lastname']);
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
     } else {
+//        Получение информации о пользователе для записи в сессию
         $q = pg_query($db_connect, "SELECT * FROM users");
         $r = pg_fetch_array($q);
         $id = $_GET['id'];
     }
+//    Запись данных пользователя в сессию
     $email = $_SESSION['email'];
     $password = $_SESSION['password'];
+//    Получения информации о пользователе для отображения на странице
     $q_2 = pg_query($db_connect, "SELECT id, name, lastname, country, city, avatar FROM users 
     WHERE id='{$_SESSION['id']}'");
     $r_2 = pg_fetch_array($q_2);
-    if ($id == $r_2['id']) {
+    if ($id == $r_2['id']) { // Для проверки ошибки авторизации
+//        Запрос данных из профиля
         $qu = pg_query($db_connect, "SELECT * FROM profile WHERE id_user='{$_SESSION['id']}'");
         $res = pg_fetch_array($qu);
+//        Кнопка выхода
         echo "
         <div id=header>
             <div class=exit>
@@ -49,25 +57,29 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
         include("html/user_menu.php");
         echo "</div>";
 //        echo "<b>"."r_2['avatar'] = ".$r_2['avatar']."</b>";
+//        Если аватар не загружен, то ставится изображение по умолчанию
         if (!$r_2['avatar']) {
             $r_2['avatar'] = "/file/1.jpg width=200 height=260";
         }
         echo "<div id=popur_photo>";
-        include("form/photo.php");
+        include("form/photo.php"); // Форма вствки фото
+//        Затемнение вокруг всплывающего окна
         echo "
             </div>
-        <div id=hover>
+        <div id=hover> 
         </div>
         ";
+//        Аватар и кнопка загрузки нового
         echo "
         <div id=left_container>
             <div id=photo>
                 <img src=" . $r_2['avatar'] . " width=200 height=260 alt=\"Аватар\">
-                <button id=button>Загрузить фото</button>
+                <button id=button type='button'>Загрузить фото</button>
             </div>
         ";
+//        Список друзей
         echo "<div id=friends>";
-
+//        Количество друзей
         $informer = pg_query($db_connect, "SELECT count(id) FROM friends 
         WHERE id_user='{$_SESSION['id']}' OR id_user_2='$id' AND status='2'");
 //        $row = pg_fetch_array($informer, PGSQL_NUM);
@@ -81,7 +93,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
         $qu_2 = pg_query($db_connect, "SELECT * FROM friends WHERE id_user_2='{$_SESSION['id']}' AND status='2'");
         while ($ru_2 = pg_fetch_array($qu_2)) {
             $id = $r_2['id'];
-            $id_user = $ru_2['id_user'];
+            $id_user = $ru_2['id_user']; // Сессионный id
             $id_user_2 = $ru_2['id_user_2'];
             $status = $ru_2['status'];
 
@@ -134,7 +146,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 ";
             }
         }
-
+//        Личная информация о пользователе
         echo "
             </div>
         </div>
@@ -181,6 +193,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             $res['year'] . "
                 <b>" . $c . "</b>&nbsp;&nbsp;" . $res['polojenie'] . "
                 <b>" . $d . "</b>&nbsp;&nbsp;" . $res['sex'] . "
+                <!--Дополнительная личная информация о пользователе-->
                 <h4 class=spoller_title>Показать еще информацию</h4>
                 <div class=spoller-body>
                     <b>" . $e . "</b>&nbsp;&nbsp;" . $res['film'] . "
@@ -201,12 +214,15 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
         echo "
         <div class=container>
         ";
+//        Список фото пользователя
         echo "
-        <div id=gallereya>
+        <div id=gallereya> 
         </div>
         ";
+//        Подключение раздела "Что нового"
         include("form/novogo.php");
         echo "<div id=novogo>";
+//        Сортировка по убыванию для корректности отображения элементов "что нового"
         $n = pg_query($db_connect, "SELECT id, id_user, poluchatel, text, data, status FROM novogo 
         WHERE poluchatel='{$_SESSION['id']}' ORDER BY id DESC");
         while ($novogo = pg_fetch_array($n)) {
@@ -254,8 +270,8 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
         $query_2 = pg_query($db_connect, "SELECT * FROM profile WHERE id_user='{$r_profile_user['id']}'");
         $result_2 = pg_fetch_array($query_2);
 
-        echo "<div id=popur_messages>";
-        include("form/messages.php");
+        echo "<div id=popur_messages>"; // Всплывающее окно ввода сообщения
+        include("form/messages.php"); // Подключение формы для отправки сообщений
         echo "</div>";
         echo "
         <div id=hover>    
@@ -274,24 +290,27 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             $r_profile_user['avatar'] = "/file/1.jpg width=200 height=260";
         }
         echo "";
+//        Кнопка "Написать сообщение"
         echo "
         <div id=left_container>
             <div id=photo>
                 <img src=" . $r_profile_user['avatar'] . " alt=\"Аватар\">
-                <button id=button>Написать сообщение</button>
+                <button id=button type='button'>Написать сообщение</button>
                 <br>
         ";
+        // Вывод друзей пользователя под аватаром
         include("form/friends.php");
         echo "</div>";
         echo "<div id=friends_2>";
 
+        // Количество друзей у другого пользователя под аватаром
         $informer_2 = pg_query($db_connect, "SELECT count(id) FROM friends 
         WHERE id_user='{$r_profile_user['id']}' OR id_user_2='$id' AND status='2'");
 //        $row_2 = pg_fetch_array($informer_2, PGSQL_NUM);
         $row_2 = pg_fetch_array($informer_2);
 
         echo "<b>Друзья&nbsp;&nbsp;&nbsp;" . $row_2[0] . "</b><br><br>";
-
+        // Вывод друзей у другого пользователя
         $qu_4 = pg_query($db_connect, "SELECT * FROM friends 
         WHERE id_user_2='{$r_profile_user['id']}' AND status='2'");
         while ($ru_4 = pg_fetch_array($qu_4)) {

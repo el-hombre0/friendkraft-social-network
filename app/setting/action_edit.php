@@ -98,4 +98,3 @@ if (isset($_POST['enter_3'])) {
         }
     }
 }
-?>

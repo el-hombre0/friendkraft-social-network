@@ -1,3 +1,4 @@
+<!--Форма авторизации-->
 <?
 $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 if (isset($_GET['act']) and isset($_GET['email'])) {
@@ -30,5 +31,5 @@ if (isset($_GET['act']) and isset($_GET['email'])) {
         <input type="password" name="password_3" id="password_3"><br>
         <input type="submit" class="submit_2" value="Войти">
     </form>
-    <button id="button">Зарегистрироваться</button>
+    <button id="button" type="button">Зарегистрироваться</button>
 </div>

@@ -1,11 +1,12 @@
 <?php
+//Страница с сообщениями
 top("Мои сообщения");
 ?>
 <?php
 $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 
 if (!$_SESSION['email'] and !$_SESSION['password']) {
-    echo "<meta http-equiv='refresh' content='0, url=/index'>";
+    echo "<meta http-equiv='refresh' content='0, url=/index'>"; // Перенаправление на начальную страницу
 } else {
     $q = pg_query($db_connect, "SELECT * FROM users  WHERE id='{$_SESSION['id']}'");
     $r = pg_fetch_array($q);
@@ -18,7 +19,8 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     echo "</div>
           <div id=novosti><div class=messages>";
 
-    $act = $_GET['act'];
+    $act = $_GET['act']; // В зависимости от act, получаемой из url, показываем входящие, отправленные, прочитанные,
+    // непрочитанные
     switch ($act) {
         default:
             echo "
@@ -27,7 +29,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             <hr>
             ";
             $q_2 = pg_query($db_connect, "SELECT * FROM message WHERE poluchatel='{$r['id']}' ORDER BY id DESC");
-            while ($r_2 = pg_fetch_array($q_2)) {
+            while ($r_2 = pg_fetch_array($q_2)) { //Для вывода всех сообщений
                 $id = $r_2['id'];
                 $author = $r_2['author'];
                 $poluchatel = $r_2['poluchatel'];
@@ -84,7 +86,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             }
             break;
 
-        case"vxod":
+        case"vxod": //Вывод всех входящих сообщений
             $vxod = $_GET['vxod'];
             echo "
             <h3>Входящие сообщение</h3>
@@ -101,7 +103,8 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 $data = $r_2['data'];
                 $ready = $r_2['ready'];
 
-                $q_3 = pg_query($db_connect, "SELECT * FROM users WHERE id='$author'");
+                $q_3 = pg_query($db_connect, "SELECT * FROM users WHERE id='$author'"); // Для объединения id и
+                // имени
                 while ($r_3 = pg_fetch_array($q_3)) {
                     $id = $r_3['id'];
                     $name = $r_3['name'];
@@ -112,6 +115,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                         $r_3['avatar'] = "/file/1.jpg width=60 height=60";
                     }
                     if ($ready == 0) {
+//                        Вывод самого сообщения и имени, фамилии, фото автора
                         echo "
                         <div id=act>
                             <a class=del href=/del_message?id=" . $r_2['id'] . ">&times;</a>
@@ -122,7 +126,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                                 <br><br>
                                 &nbsp;&nbsp;
                                 <a href=mail?act=inbox&id=" . $r_3['id'] . ">" .
-                            substr($r_2['mess'], 0, 50) . "</a>
+                            substr($r_2['mess'], 0, 50) . "</a> <!--Для ограничения длины сообщения при выводе-->
                                 <br>
                                 <small>" . $r_2['data'] . "</small>
                                 <br>
@@ -154,6 +158,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             }
             break;
 
+            //Исходящие сообщения
         case"isxod":
             $isxod = $_GET['isxod'];
             echo "
@@ -223,7 +228,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 }
             }
             break;
-
+        // Прочитанные сообщения
         case"read_1":
             $read_1 = $_GET['read_1'];
             echo "<h3>Прочитанные сообщение</h3><br><br><br><br><hr>";
@@ -269,6 +274,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             }
             break;
 
+        // Не прочитанные сообщения
         case"read_0":
             $read_0 = $_GET['read_0'];
             echo "<h3>Не прочитанные сообщение</h3><br><br><br><br><hr>";
@@ -313,6 +319,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             }
             break;
 
+        // Переход в личную переписку после клика по сообщению
         case"inbox":
             $inbox = $_GET['inbox'];
             if (isset($_GET['id'])) {
@@ -321,7 +328,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 $su = pg_fetch_array($s);
                 $query_2 = pg_query($db_connect, "SELECT * FROM users WHERE id='{$_GET['id']}'");
                 $result_2 = pg_fetch_array($query_2);
-                if ($su['poluchatel'] == $_SESSION['id']) {
+                if ($su['poluchatel'] == $_SESSION['id']) { // Обновление состояния прочитано
                     pg_query($db_connect, "UPDATE message SET ready='1' WHERE author='{$_GET['id']}' 
                                AND poluchatel='{$r['id']}'");
                     pg_query($db_connect, "UPDATE message SET ready='1' WHERE poluchatel='{$_GET['id']}' 
@@ -329,9 +336,10 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
 
                 }
             }
-            echo "<div id=novosti_3>";
+            echo "<div id=novosti_3>"; // Большое поле диалога, содержащее все сообщения между двумя пользователями
             // if(isset($_GET['id'])){
             //$id=$_GET['id'];
+//        Выборка сообщений диалога
             $qur = pg_query($db_connect, "SELECT * FROM dialog WHERE poluchatel='{$_SESSION['id']}' 
                                AND author='{$_GET['id']}' OR poluchatel='{$_GET['id']}' 
                                                          AND author='{$_SESSION['id']}'");
@@ -350,6 +358,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                     <div id=act_2>
                         <p>
                             <img src=" . $res_2['avatar'] . " alt=\"Аватар\">
+                            <!--Имя фамилия пользователя-->
                             <b><a href=/index?id=" . $res_2['id'] . ">" . $res_2['name'] . "&nbsp;&nbsp;" .
                         $res_2['lastname'] . "</a>
                             <small>" . $ru['data'] . "</small>
@@ -363,6 +372,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
                 }
             }
             echo "</div>";
+//            Вызов обработчика диалога
             echo "
             <br>
             <hr>

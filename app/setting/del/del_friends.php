@@ -1,4 +1,5 @@
-<?
+<?php
+//Обработчик удаления друзей
 $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 if (!$_SESSION['email'] and !$_SESSION['password']) {
 
@@ -14,4 +15,3 @@ if (isset($_GET['id'])) {
     pg_query($db_connect, "DELETE FROM friends WHERE id='$id'");
     header('location:' . $_SERVER['HTTP_REFERER']);
 }
-?>

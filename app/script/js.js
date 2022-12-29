@@ -1,29 +1,33 @@
 $(document).ready(function () {
     $("#popur_top").css("display", "block");
 
-    $("#button").click(function () {
-        $("#popur").css("display", "block");
-        $("#hover").css("display", "block");
+    // Кнопка появления всплывающего окна
+    $("#button").click(function () { // При нажатии на кнопку
+        $("#popur").css("display", "block"); // Задаёт свойства стиля для всплывающего окна
+        $("#hover").css("display", "block"); //
     });
 
     $(".spoller-body").hide();
     $(".spoller_title").click(function () {
         $(this).next().slideToggle();
     });
+
+    // Кнопка подтверждения регистрации
     $(".submit").click(function (event) {
         event.preventDefault();
         var email = $("#email").val();
         var password = $("#password").val();
         var password_2 = $("#password_2").val();
+        // Куда и как отправляется
         $.ajax({
             type: "post",
             url: "/action_register",
-            data: {
+            data: { // Отправляемые параметры
                 email: email,
                 password: password,
                 password_2: password_2
             },
-            success: function (data) {
+            success: function (data) { // Вывод информации при успешной отправке и получении результата
                 $("#inform").html(data);
             }
         });

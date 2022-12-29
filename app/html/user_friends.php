@@ -1,4 +1,5 @@
 <?php
+//Меню друзей и подписчиков авторизованного пользователя
 if (!$_SESSION['email'] and !$_SESSION['password']) {
 
 } else {

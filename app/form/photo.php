@@ -1,3 +1,4 @@
+<!--Форма для загрузки фото-->
 <div id="photo_top">
     <span>Загрузка фотографии</span>
     <a href="" class="times">&times</a>

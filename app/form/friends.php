@@ -1,4 +1,5 @@
 <?php
+//Форма добавления в друзья
 $db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 
 $q = pg_query($db_connect, "SELECT * FROM users WHERE id='{$_GET['id']}'");
@@ -11,6 +12,7 @@ $r_2 = pg_fetch_array($q_2);
 $status = $r_2['status'];
 $id_user_2 = $r_2['id_user_2'];
 
+// Отображение состояния друга или не друга на его странице
 if ($r_2['status'] == 1) {
     echo "<br>Заявка отправлена";
 } else if ($r_2['status'] == 2) {

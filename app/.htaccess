@@ -1,15 +1,20 @@
+#Перевод запросов к индексному файлу и уборка расширений .php
 RewriteEngine on
 Options All -Indexes
-RewriteCond %{REQUEST_FILENAME} -s [OR]
-RewriteCond %{REQUEST_FILENAME} -l [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^resource/(.*)$ resource/$1 [L]
-RewriteRule ^.*$ [NC,L]
-RewriteRule ^.*$ index.php [NC,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php?path=$1 [NC,L,QSA]
+
+#RewriteCond %{REQUEST_FILENAME} -s [OR]
+#RewriteCond %{REQUEST_FILENAME} -l [OR]
+#RewriteCond %{REQUEST_FILENAME} -d
+#RewriteRule ^resource/(.*)$ resource/$1 [L]
+#RewriteRule ^.*$ [NC,L]
+#RewriteRule ^.*$ index.php [NC,L]
 
 
-
-
+#Для запуска php-кода внутри js-файлов
 AddType application/x-httpd-php .js
 
 AddHandler x-httpd-php5 .js

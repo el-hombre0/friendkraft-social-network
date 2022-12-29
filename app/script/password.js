@@ -1,3 +1,4 @@
+// Скрипт смены пароля
 $(document).ready(function () {
     $(".submit_pass").click(function (event) {
         event.preventDefault();

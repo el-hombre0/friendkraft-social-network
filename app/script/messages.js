@@ -1,23 +1,24 @@
+// Скрипт обработки личных сообщений
 $(document).ready(function () {
 
 
-    $("#button").click(function () {
-        $("#popur_messages").css("display", "block");
+    $("#button").click(function () { // При нажатии на кнопку
+        $("#popur_messages").css("display", "block"); // Для отображения всплывающего окна
         $("#popur_messages").show("fast");
         $("#hover").css("display", "block");
     });
 
-    $('#novosti_3').scrollTop(400);
+    $('#novosti_3').scrollTop(400); // Чтобы сообщения в диалоге не вылезали за пределы контейнера
 
-    $("#submit_mess").click(function (event) {
+    $("#submit_mess").click(function (event) { // Обработка простых сообщений
         event.preventDefault();
-        var author = $("#author").val();
-        var poluchatel = $("#poluchatel").val();
-        var mess = $("#mess").val();
+        var author = $("#author").val(); // Отправитель
+        var poluchatel = $("#poluchatel").val(); // Получатель
+        var mess = $("#mess").val(); // Текст сообщения
 
         $.ajax({
             type: "post",
-            url: "/action_message",
+            url: "/action_message", // Обработчик
             data: {
                 author: author,
                 poluchatel: poluchatel,
@@ -25,11 +26,11 @@ $(document).ready(function () {
 
             },
             success: function (data) {
-                $(".inform_mess").html(data);
+                $(".inform_mess").html(data); // Вывод информации
             }
         });
     });
-    $("#submit_5").click(function (event) {
+    $("#submit_5").click(function (event) { // Обработка сообщений диалога
         event.preventDefault();
         var author = $("#author").val();
         var poluchatel = $("#poluchatel").val();

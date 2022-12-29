@@ -9,7 +9,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
 if (isset($_POST)) {
     if (empty($_POST['textarea'])) {
 
-    } else {
+    } else { // Если сообщение отправлено
         $author = $_POST['author'];
         $poluchatel = $_POST['poluchatel'];
         $textarea = $_POST['textarea'];

@@ -1,4 +1,5 @@
 <?php
+//Страница с друзьями
 top("Мои друзья");
 ?>
 
@@ -24,9 +25,9 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
           ";
     $drug = $_GET['drug'];
     switch ($drug) {
-        default:
+        default: // Еще не в друзьях - отправить заявку на добавление в друзья
             $q = pg_query($db_connect, "SELECT * FROM friends 
-            WHERE id_user_2='{$_SESSION['id']}' AND status='1'");
+            WHERE id_user_2='{$_SESSION['id']}' AND status='1'"); // Отправлена заявка (статус 1)
             while ($r = pg_fetch_array($q)) {
                 $id = $r['id'];
                 $id_user = $r['id_user'];
@@ -68,7 +69,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             echo "<br>";
             echo "<div id=zayavka><b>Мои друзья</b><hr>";
             $q_2 = pg_query($db_connect, "SELECT * FROM friends 
-            WHERE id_user_2='{$_SESSION['id']}' AND status='2'");
+            WHERE id_user_2='{$_SESSION['id']}' AND status='2'"); // Заявка одобрена (статус 2)
             while ($r_2 = pg_fetch_array($q_2)) {
                 $id = $r_2['id'];
                 $id_user = $r_2['id_user'];
@@ -142,7 +143,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             break;
 
 
-        case "show":
+        case "show": // Кнопка отправить в подписчики (статус 3)
             $show = $_GET['show'];
             if (isset($_GET['id'])) {
                 $q_4 = pg_query($db_connect, "SELECT * FROM friends WHERE id='$id'");
@@ -153,7 +154,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             break;
 
 
-        case "prin":
+        case "prin": // Кнопка принять в друзья
             $prin = $_GET['prin'];
             if (isset($_GET['id'])) {
                 $q_4 = pg_query($db_connect, "SELECT * FROM friends WHERE id='$id'");
@@ -164,7 +165,7 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
             break;
 
 
-        case"podpischiki":
+        case"podpischiki": // Вывод подписчиков
             $podpischiki = $_GET['podpischiki'];
 
             echo "<div id=zayavka><b>Мои подписчики</b><hr>";

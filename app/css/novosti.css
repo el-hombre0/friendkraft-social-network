@@ -1,11 +1,10 @@
+/*Таблица стилей для новостей*/
 #novosti {
     width: 630px;
     margin-top: 10px;
     float: left;
     margin-left: 10px;
     border-radius: 7px;
-
-
 }
 
 #rightcol {

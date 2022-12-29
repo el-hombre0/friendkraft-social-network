@@ -1,7 +1,9 @@
+/*Основной задний фон*/
 body {
     background-color: #afafaf;
 }
 
+/*Шапка*/
 #header {
     width: 90%;
     height: 60px;
@@ -11,6 +13,7 @@ body {
     background: #0d1117;
 }
 
+/*Левая колонка*/
 #leftcol {
     width: 250px;
     float: left;
@@ -20,6 +23,7 @@ body {
     padding: 10px;
 }
 
+/*Контент*/
 #content {
     width: 900px;
     margin-top: 10px;
@@ -30,16 +34,19 @@ body {
     padding: 10px;
 }
 
+/*Заголовок контента*/
 #content h3 {
     margin-left: 20px;
 }
 
+/*Текст контента*/
 #content p {
     margin-left: 20px;
     font-size: 20px;
     text-align: justify;
 }
 
+/*Авторизация email*/
 #login #email_2 {
     padding: 8px;
     margin-left: 25px;
@@ -49,6 +56,7 @@ body {
     outline: none;
 }
 
+/*Авторизация пароль*/
 #login #password_3 {
     padding: 8px;
     margin-left: 25px;
@@ -58,6 +66,7 @@ body {
     outline: none;
 }
 
+/*Авторизация кнопка подтверждения*/
 #login .submit_2 {
     width: 187px;
     padding: 8px;
@@ -68,11 +77,13 @@ body {
     outline: none;
 }
 
+/*Авторизация наименования*/
 #login b {
     margin-left: 25px;
     color: #696969;
 }
 
+/*Авторизация кнопка подтверждения*/
 #login #button {
     width: 187px;
     padding: 8px;
@@ -84,6 +95,7 @@ body {
     margin-top: 10px;
 }
 
+/*Регистрация Всплывающее окно*/
 #popur {
     display: none;
     width: 520px;
@@ -99,6 +111,7 @@ body {
 
 }
 
+/*Регистрация Затемнение области вокруг окна*/
 #hover {
     display: none;
     width: 100%;
@@ -110,6 +123,7 @@ body {
     z-index: 998;
 }
 
+/*Регистрация Шапка окна*/
 .popur_top {
     width: 520px;
     height: 50px;
@@ -118,12 +132,14 @@ body {
     border-radius: 5px;
 }
 
+/*Регистрация Заголовок*/
 span {
     margin-left: 20px;
     font-size: 20px;
     color: #fff;
 }
 
+/*Крестик высплывающего окна*/
 #popur a {
     color: #fff;
     text-decoration: none;
@@ -132,11 +148,12 @@ span {
     right: 10px;
 }
 
+/*Регистрация текст*/
 #register p {
     margin-left: 90px;
     margin-top: 5px;
 }
-
+/*Регистрация наименования полей формы*/
 #register #email, #password, #password_2 {
     width: 263px;
     height: 30px;
@@ -146,6 +163,7 @@ span {
     margin-top: 10px;
 }
 
+/*Регистрация кнопка подстверждения*/
 #register .submit {
     width: 263px;
     height: 30px;

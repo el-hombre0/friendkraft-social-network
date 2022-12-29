@@ -23,7 +23,7 @@
     width: 200px;
 
     float: left;
-    background: #E6E6FA;
+    /*background: #E6E6FA;*/
     margin-top: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
@@ -175,6 +175,7 @@
     margin-top: 10px;
 }
 
+/*Что нового ввод сообщения*/
 .input, .input_2 {
     width: 495px;
     background: #fff;
@@ -186,6 +187,7 @@
     outline: none;
 }
 
+/*Что нового подтверждение*/
 .enter, .enter_2 {
     width: 180px;
     height: 30px;

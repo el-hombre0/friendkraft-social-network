@@ -1,4 +1,5 @@
 <?php
+//Меню личных данных паторизованного пользователя
 if (!$_SESSION['email'] and !$_SESSION['password']) {
 } else {
     echo "

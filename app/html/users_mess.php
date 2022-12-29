@@ -1,4 +1,5 @@
 <?php
+//Меню сообщений авторизованного пользователя
 if (!$_SESSION['email'] and !$_SESSION['password']) {
 } else {
     echo "
