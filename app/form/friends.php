@@ -1,6 +1,6 @@
 <?php
 //Форма добавления в друзья
-$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
+include_once '/var/www/html/bd.php';
 
 $q = pg_query($db_connect, "SELECT * FROM users WHERE id='{$_GET['id']}'");
 $r = pg_fetch_array($q);

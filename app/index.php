@@ -1,7 +1,7 @@
 <?php
 session_start();
 header('Content-Type: text/html; charset= utf-8'); // Установка кодировки
-include("bd.php");
+include_once '/var/www/html/bd.php';
 
 if ($_SERVER['REQUEST_URI'] == '/') { // При переходе по пустому адресу
     $Page = 'index';

@@ -1,5 +1,6 @@
 <?php
-$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
+include_once '/var/www/html/bd.php';
+//$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 
 //Проверка авторизован ли пользователь
 if (!$_SESSION['email'] and !$_SESSION['password']) {

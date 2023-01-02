@@ -1,6 +1,6 @@
 <!--Форма авторизации-->
 <?
-$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
+include_once '/var/www/html/bd.php';
 if (isset($_GET['act']) and isset($_GET['email'])) {
     $act = $_GET['act'];
     $act = htmlspecialchars($act);

@@ -1,6 +1,7 @@
 <?php
 //Обработчик регистрации
-$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
+include_once '/var/www/html/bd.php';
+//$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
 if (isset($_POST)) {
     if (empty($_POST['email'])) {
         echo "<b>Введите ваш E-mail</b>";

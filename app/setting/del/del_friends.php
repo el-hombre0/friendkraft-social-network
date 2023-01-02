@@ -1,6 +1,6 @@
 <?php
 //Обработчик удаления друзей
-$db_connect = pg_connect("host=localhost dbname=postgres port=5432 user=postgres password=password");
+include_once '/var/www/html/bd.php';
 if (!$_SESSION['email'] and !$_SESSION['password']) {
 
 } else {
