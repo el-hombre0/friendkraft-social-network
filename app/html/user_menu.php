@@ -18,13 +18,15 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     $row_2 = pg_fetch_array($informer_2);
 
     echo "
-        <div class=menu_user>
+        <nav class='navbar navbar-expand-lg navbar-light bg-light'>
+        <div class='container'>
             <a href=index?id=" . $_SESSION['id'] . ">Моя страница</a><br>
-            <a href=novosti>Новости</a><br>
-            <a href=profile?=ocnovnoe>Профиль</a><br>
-            <a href=/mail>Мои сообщения</a><b>" . $row[0] . "</b><br>
-            <a href=/friends>Мои друзья</a><b>" . $row_2[0] . "</b><br>
-            <a href=lyoudi>Люди</a><br>
-        </div>
+                <a href=novosti>Новости</a><br>
+                <a href=profile?=ocnovnoe>Профиль</a><br>
+                <a href=/mail>Мои сообщения</a><b>" . $row[0] . "</b><br>
+                <a href=/friends>Мои друзья</a><b>" . $row_2[0] . "</b><br>
+                <a href=lyoudi>Люди</a><br>
+            </div>
+        </nav>
        ";
 }
