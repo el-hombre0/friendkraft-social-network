@@ -18,14 +18,39 @@ if (!$_SESSION['email'] and !$_SESSION['password']) {
     $row_2 = pg_fetch_array($informer_2);
 
     echo "
-        <nav class='navbar navbar-expand-lg navbar-light bg-light'>
-        <div class='container'>
-            <a href=index?id=" . $_SESSION['id'] . ">Моя страница</a><br>
-                <a href=novosti>Новости</a><br>
-                <a href=profile?=ocnovnoe>Профиль</a><br>
-                <a href=/mail>Мои сообщения</a><b>" . $row[0] . "</b><br>
-                <a href=/friends>Мои друзья</a><b>" . $row_2[0] . "</b><br>
-                <a href=lyoudi>Люди</a><br>
+        <nav class='navbar navbar-expand-md navbar-light bg-light'>
+            <div class='container'>
+                <a href='' class='navbar-brand'>FriendKraft</a>
+                <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarContent' 
+                aria-controls='navbarContent' aria-expanded='false'>
+                    <span class='navbar-toggler-icon'></span>
+                </button>
+                <div class='collapse navbar-collapse' id='navbarContent'>
+                    <ul class='navbar-nav mr-auto mb-2'>
+                        <li class='nav-item'>
+                            <a class='nav-link' href=index?id=" . $_SESSION['id'] . ">Моя страница</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link' href=novosti>Новости</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link' href=profile?=ocnovnoe>Профиль</a>
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link' href=/mail>Мои сообщения</a>". $row[0] ."
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link' href=/friends>Мои друзья</a>" . $row_2[0] . "
+                        </li>
+                        <li class='nav-item'>
+                            <a class='nav-link' href=lyoudi>Люди</a>
+                        </li>
+                    </ul>
+                    <form action='' class='d-flex'>
+                    <input type='search' placeholder='Найти...' class='form-control mr-2'>
+                    <button class='btn btn-outline-success'>Поиск</button>
+</form>                    
+                </div>
             </div>
         </nav>
        ";
